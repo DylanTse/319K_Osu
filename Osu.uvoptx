@@ -119,10 +119,6 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>DLGUARM</Key>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
           <Key>Stepper_OUTPUT_SEL</Key>
           <Name>1</Name>
         </SetRegEntry>
@@ -257,7 +253,7 @@
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>(mouse.x*128)/4096,0x0A</ItemText>
+          <ItemText>dirPressed,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
@@ -267,7 +263,17 @@
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>scale_factor</ItemText>
+          <ItemText>mouse.y,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>xOverlap</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>yOverlap</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>

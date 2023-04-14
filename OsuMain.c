@@ -5,6 +5,7 @@
 // Last Modified: 4/9/2023 
 
 #include <stdint.h>
+#include <stdlib.h>
 #include "../inc/tm4c123gh6pm.h"
 #include "../inc/ST7735.h"
 #include "Random.h"
@@ -16,6 +17,7 @@
 #include "EdgeTrigger.h"
 #include "Timer1.h"
 #include "Timer0.h"
+
 
 /*****PROTOTYPES*****/
 void DisableInterrupts(void); // Disable interrupts
@@ -31,10 +33,14 @@ void endScreen(void);
 
 /*****GLOBALS + STRUCTS*****/
 #define MID_COORD_X 2048
-#define MID_COORD_Y 2100
+#define MID_COORD_Y 2048
 #define MAX_COORD 4095
-#define MAX_DELTA 500 // farthest mouse can move is a scalar of MAX_DELTA in a direction
+#define MAX_DELTA 400 // farthest mouse can move is a scalar of MAX_DELTA in a direction
 #define PHYSICAL_DIAGONAL 205 // sqrt(128^2 + 160^2) = 204.80 --> map full joystick range to display
+
+typedef enum {
+	False, True
+} bool;
 
 typedef enum {
 	START, MENU, LANG_SELECT, DIFF_SELECT, GAME, PAUSE, END
@@ -53,9 +59,10 @@ typedef enum {
 } arrow_t;
 
 typedef struct {
-	uint32_t x;
-	uint32_t y;
-	arrow_t direction;
+	int32_t x;
+	int32_t y;
+	uint32_t width;
+	uint32_t height;
 } sprite_t;
 
 
@@ -64,18 +71,30 @@ screenmode_t prevScreen = -1; // set OG value to invalid comparison
 language_t langauge = ENGLISH;
 difficulty_t difficulty = NORMAL;
 uint32_t joystickData[2];
+
 sprite_t mouse; // mouse = user cursor
+sprite_t osuVals; //osu logo
+arrow_t dirPressed = -1; // default value is invalid comparison
+
 
 /*****INTERRUPT HANDLERS*****/
 void GPIOPortE_Handler(void){
 	// [PE3: right] [PE2: left] [PE1: down] [PE0: up]
 	GPIO_PORTE_ICR_R = 0x0F;
+	switch(GPIO_PORTE_DATA_R){
+		case 0x01: dirPressed = UP; break;
+		case 0x02: dirPressed = DOWN; break;
+		case 0x04: dirPressed = LEFT; break;
+		case 0x08: dirPressed = RIGHT; break;
+	}
 }
+
 
 void GPIOPortC_Handler(void){
 	// check PC6 (joystick 'IN' button)
 	GPIO_PORTC_ICR_R = 0x40;
-	currScreen = MENU;
+	// if currently on Start screen --> then pressing in goes MENU. if playing and press in --> then pressing in goes PAUSE
+	currScreen = (currScreen == START) ? MENU : PAUSE;
 }
 
 void Timer1A_Handler(void){
@@ -83,7 +102,9 @@ void Timer1A_Handler(void){
 	JoyStick_In(joystickData);
 	
 	int32_t dx = joystickData[0] - MID_COORD_X;
+	dx = (abs(dx) > 50) ? dx : 0; // reduce no movement drifting
 	int32_t dy = joystickData[1]- MID_COORD_Y;
+	dy = (abs(dy) > 50) ? dy : 0;
 	int32_t scale_factor = (MAX_COORD / MAX_DELTA) + 1;
 	
 	// scaling so that based on how far push joystick
@@ -91,15 +112,40 @@ void Timer1A_Handler(void){
 	dy /= scale_factor;
 	int32_t mouseDX = (dx * PHYSICAL_DIAGONAL) / MAX_DELTA;
 	int32_t mouseDY = (dy * PHYSICAL_DIAGONAL) / MAX_DELTA;
-		
-	// move mouse.x, mouse.y in direction of joystick	
+	
+	// move mouse.x, mouse.y in direction of joystick
+	mouse.x *= 32; // convert 128x160 dimensions to 4096x4096 for pot
+	mouse.y *= 26; // convert 128x160 dimensions to 4096x4096 for pot
 	mouse.x += dx;
 	mouse.y += dy;
+	
+	if( mouse.x <= 0){
+		mouse.x = 0;
+	}
+	else if (mouse.x + mouse.width >= 4095){
+		mouse.x = 4095 - mouse.width;
+	}
+	
+	if( mouse.y <= 0){
+		mouse.y = 0;
+	}
+	else if (mouse.y - mouse.height >= 4095){
+		mouse.y = 4095 - mouse.height;
+	}	
+	
+	mouse.x = (mouse.x*128)/4096;
+	mouse.y = (mouse.y*159)/4096;
 }
+
+
 
 void Timer0A_Handler(void){
 	TIMER0_ICR_R = TIMER_ICR_TATOCINT;
 }
+
+
+
+uint8_t hover(sprite_t cursor, sprite_t hitCircle);
 
 /*****MAIN STUFF*****/
 int main(void){
@@ -112,11 +158,16 @@ int main(void){
 	Timer1_Init(80000000/30, 1); // sample at 30 Hz
 	Wave_Init(); // init sound
 	EnableInterrupts();
-	mouse.x = mouse.y = 2048; // default mouse value is in center of screen
+	
+	// default values
+	mouse.x = mouse.y = 65; // default mouse value is in center of screen
+	mouse.width = mouse.height = 20;
+	osuVals.x = 30; osuVals.y= 115;
+	osuVals.width = osuVals.height = 70;
 	
 	while(1){
 		
-		ST7735_DrawBitmap( (mouse.x*128)/4096, (mouse.y*160)/4096, cursor, 40, 40);
+		ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
 		
 		if (currScreen != prevScreen){
 			switch (currScreen){
@@ -142,19 +193,28 @@ int main(void){
 					endScreen();
 					break;
 			}
-			prevScreen = currScreen;
+			//prevScreen = currScreen;
 		}
+		
 	}
 }
 
 
 void startScreen(void){
   ST7735_FillScreen(0x0000); // set screen to black
-	ST7735_DrawBitmap(30,115, osuLogo, 70,70);
+	ST7735_DrawBitmap(osuVals.x, osuVals.y, osuLogo, osuVals.width, osuVals.height);
 	ST7735_SetCursor(4,12);
 	ST7735_OutString("Press joystick");
 	ST7735_SetCursor(4,13);
 	ST7735_OutString("down on Osu!");
+	
+	while(1){
+		uint8_t collide = hover(mouse, osuVals);
+		if(currScreen == MENU && collide){break;}
+		ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
+	}	
+	prevScreen = START;
+	ST7735_OutString("HOVER SUCCESSFUL");
 }
 
 void menuScreen(void){
@@ -169,6 +229,45 @@ void gameScreen(void){}
 void pauseScreen(void){}
 void endScreen(void){}
 
+
+bool valInRange(int32_t value, int32_t min, int32_t max){
+	return (value >= min) && (value <= max);
+}
+	
+uint8_t hover(sprite_t cursor, sprite_t hitCircle){
+	bool xOverlap = False, yOverlap = False;
+	
+		// left edge, right edge, bottom edge, top edge
+	int32_t rect1_coords[4] = { cursor.x, cursor.x+cursor.width-1, cursor.y, cursor.y+cursor.height+1};
+	int32_t rect2_coords[4] = { hitCircle.x, hitCircle.x+hitCircle.width-1, hitCircle.y, hitCircle.y+hitCircle.height+1};
+
+	// Possible cases to consider for no overlap to occur
+	/*
+		1) Rect1 left edge > Rect2 right edge 
+		2) Rect1 right edge < Rect2 left edge 
+		3) Rect1 bottom edge > Rect2 top edge
+		4) Rect1 top edge < Rect2 bottom edge
+	*/
+	
+	if (rect1_coords[0] > rect2_coords[1] || rect1_coords[1] < rect2_coords[0] ){
+		return 0;
+	}
+	if (rect1_coords[2] < rect2_coords[3] || rect1_coords[3] > rect2_coords[2] ){
+		return 0;
+	}
+	return 1;
+	
+	/*
+	xOverlap = valInRange(cursor.x, hitCircle.x, hitCircle.x+hitCircle.width)
+					|| valInRange(hitCircle.x, cursor.x-cursor.width, cursor.x+cursor.width);
+	
+	yOverlap = valInRange(cursor.y, hitCircle.y-hitCircle.height, hitCircle.y+hitCircle.height)
+					|| valInRange(hitCircle.y, cursor.y-cursor.height, cursor.x+cursor.height);
+	*/
+	
+	// Return if there is any overlap. Must overlap in X and Y to be considered valid hit
+	//return (xOverlap && yOverlap);
+}
 
 
 
