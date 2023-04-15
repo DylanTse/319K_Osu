@@ -71,10 +71,11 @@ screenmode_t prevScreen = -1; // set OG value to invalid comparison
 language_t langauge = ENGLISH;
 difficulty_t difficulty = NORMAL;
 uint32_t joystickData[2];
+arrow_t dirPressed = -1; // default value is invalid comparison
 
 sprite_t mouse; // mouse = user cursor
 sprite_t osuVals; //osu logo
-arrow_t dirPressed = -1; // default value is invalid comparison
+sprite_t clearCursorVals; // need to clear the cursor area behind
 
 
 /*****INTERRUPT HANDLERS*****/
@@ -96,6 +97,7 @@ void GPIOPortC_Handler(void){
 	// if currently on Start screen --> then pressing in goes MENU. if playing and press in --> then pressing in goes PAUSE
 	currScreen = (currScreen == START) ? MENU : PAUSE;
 }
+
 
 void Timer1A_Handler(void){
   TIMER1_ICR_R = TIMER_ICR_TATOCINT; // acknowledge TIMER1A timeout
@@ -121,16 +123,14 @@ void Timer1A_Handler(void){
 	
 	if( mouse.x <= 0){
 		mouse.x = 0;
-	}
-	else if (mouse.x + mouse.width >= 4095){
-		mouse.x = 4095 - mouse.width;
+	} else if (mouse.x + (mouse.width*32) >= 4095){
+		mouse.x = 4095 - (mouse.width*32);
 	}
 	
 	if( mouse.y <= 0){
-		mouse.y = 0;
-	}
-	else if (mouse.y - mouse.height >= 4095){
-		mouse.y = 4095 - mouse.height;
+		mouse.y = (mouse.height*26);
+	} else if (mouse.y >= 4095){
+		mouse.y = 4095 - (mouse.height);
 	}	
 	
 	mouse.x = (mouse.x*128)/4096;
@@ -161,13 +161,15 @@ int main(void){
 	
 	// default values
 	mouse.x = mouse.y = 65; // default mouse value is in center of screen
-	mouse.width = mouse.height = 20;
+	mouse.width = mouse.height = clearCursorVals.width = clearCursorVals.height = 20;
 	osuVals.x = 30; osuVals.y= 115;
 	osuVals.width = osuVals.height = 70;
+	clearCursorVals.x = clearCursorVals.y = 0; // start anywhere, will jump to prev cursor location
 	
 	while(1){
 		
 		ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
+		ST7735_DrawBitmap( mouse.x, mouse.y, clearCursor, mouse.width, mouse.height);
 		
 		if (currScreen != prevScreen){
 			switch (currScreen){
@@ -209,8 +211,8 @@ void startScreen(void){
 	ST7735_OutString("down on Osu!");
 	
 	while(1){
-		uint8_t collide = hover(mouse, osuVals);
-		if(currScreen == MENU && collide){break;}
+		bool collide = hover(mouse, osuVals);
+		if(collide == True){break;}
 		ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
 	}	
 	prevScreen = START;
@@ -256,17 +258,6 @@ uint8_t hover(sprite_t cursor, sprite_t hitCircle){
 		return 0;
 	}
 	return 1;
-	
-	/*
-	xOverlap = valInRange(cursor.x, hitCircle.x, hitCircle.x+hitCircle.width)
-					|| valInRange(hitCircle.x, cursor.x-cursor.width, cursor.x+cursor.width);
-	
-	yOverlap = valInRange(cursor.y, hitCircle.y-hitCircle.height, hitCircle.y+hitCircle.height)
-					|| valInRange(hitCircle.y, cursor.y-cursor.height, cursor.x+cursor.height);
-	*/
-	
-	// Return if there is any overlap. Must overlap in X and Y to be considered valid hit
-	//return (xOverlap && yOverlap);
 }
 
 
