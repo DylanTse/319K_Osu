@@ -250,9 +250,9 @@ Command Line: --debug --xref --diag_suppress=9931,A1950W --cpu=Cortex-M4 --fpu=
 SoftVFP --depend=.\stringconversion.d -o.\stringconversion.o -I.\RTE\_Osu -IC:\
 Users\Dylan\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include -IC:\Use
 rs\Dylan\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123 --p
-redefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 538" --predefine="
-_RTE_ SETA 1" --predefine="TM4C123GH6PM SETA 1" --predefine="_RTE_ SETA 1" --li
-st=.\stringconversion.lst ..\inc\StringConversion.s
+redefine="__UVISION_VERSION SETA 538" --predefine="_RTE_ SETA 1" --predefine="T
+M4C123GH6PM SETA 1" --predefine="_RTE_ SETA 1" --list=.\stringconversion.lst ..
+\inc\StringConversion.s
 
 
 
@@ -403,4 +403,4 @@ Symbol: val
       At line 132 in file ..\inc\StringConversion.s
 
 4 symbols
-350 symbols in table
+349 symbols in table

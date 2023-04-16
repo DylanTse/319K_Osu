@@ -79,10 +79,9 @@ ARM Macro Assembler    Page 2
 Command Line: --debug --xref --diag_suppress=9931,A1950W --cpu=Cortex-M4 --fpu=
 SoftVFP --depend=.\random.d -o.\random.o -I.\RTE\_Osu -IC:\Users\Dylan\AppData\
 Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include -IC:\Users\Dylan\AppData\Loc
-al\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123 --predefine="__EVAL SET
-A 1" --predefine="__UVISION_VERSION SETA 538" --predefine="_RTE_ SETA 1" --pred
-efine="TM4C123GH6PM SETA 1" --predefine="_RTE_ SETA 1" --list=.\random.lst rand
-om.s
+al\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123 --predefine="__UVISION_
+VERSION SETA 538" --predefine="_RTE_ SETA 1" --predefine="TM4C123GH6PM SETA 1" 
+--predefine="_RTE_ SETA 1" --list=.\random.lst random.s
 
 
 
@@ -147,4 +146,4 @@ Symbol: Random_Init
       At line 19 in file random.s
 Comment: Random_Init used once
 4 symbols
-342 symbols in table
+341 symbols in table

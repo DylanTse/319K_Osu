@@ -141,10 +141,9 @@ ARM Macro Assembler    Page 3
 Command Line: --debug --xref --diag_suppress=9931,A1950W --cpu=Cortex-M4 --fpu=
 SoftVFP --depend=.\busywait.d -o.\busywait.o -I.\RTE\_Osu -IC:\Users\Dylan\AppD
 ata\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include -IC:\Users\Dylan\AppData
-\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123 --predefine="__EVAL
- SETA 1" --predefine="__UVISION_VERSION SETA 538" --predefine="_RTE_ SETA 1" --
-predefine="TM4C123GH6PM SETA 1" --predefine="_RTE_ SETA 1" --list=.\busywait.ls
-t ..\inc\BusyWait.s
+\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123 --predefine="__UVIS
+ION_VERSION SETA 538" --predefine="_RTE_ SETA 1" --predefine="TM4C123GH6PM SETA
+ 1" --predefine="_RTE_ SETA 1" --list=.\busywait.lst ..\inc\BusyWait.s
 
 
 
@@ -200,4 +199,4 @@ Symbol: loopSPID
       At line 78 in file ..\inc\BusyWait.s
 Comment: loopSPID used once
 6 symbols
-340 symbols in table
+339 symbols in table

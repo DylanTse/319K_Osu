@@ -141,24 +141,17 @@ void Timer1A_Handler(void){
 }
 
 
-
-void Timer0A_Handler(void){
-	TIMER0_ICR_R = TIMER_ICR_TATOCINT;
-}
-
-
-
 uint8_t hover(sprite_t cursor, sprite_t hitCircle);
 /*****MAIN STUFF*****/
 int main(void){
   DisableInterrupts();
 	TExaS_Init(NONE); // Bus clock is 80 MHz
-	Output_Init();
+		Output_Init();
 	ADC_Init();
+		Wave_Init(); // init sound
 	EdgeTrigger_Init();
 	JoyStick_Init();
 	Timer1_Init(80000000/30, 1); // sample at 30 Hz
-	Wave_Init(); // init sound
 	EnableInterrupts();
 	
 	// default values
@@ -169,6 +162,7 @@ int main(void){
 	langPos.x = 20; langPos.y = 60; langPos.width = 90; langPos.height = 29;
 	difficultyPos.x = 20; difficultyPos.y = 115; difficultyPos.width = 90; difficultyPos.height = 29;
 	
+	Wave_Hit();
 	
 	startScreen();
 	// busy wait until cursor over and click on Osu logo

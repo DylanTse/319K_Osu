@@ -1092,10 +1092,9 @@ ARM Macro Assembler    Page 17
 Command Line: --debug --xref --diag_suppress=9931,A1950W --cpu=Cortex-M4 --fpu=
 SoftVFP --depend=.\startup.d -o.\startup.o -I.\RTE\_Osu -IC:\Users\Dylan\AppDat
 a\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include -IC:\Users\Dylan\AppData\L
-ocal\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123 --predefine="__EVAL S
-ETA 1" --predefine="__UVISION_VERSION SETA 538" --predefine="_RTE_ SETA 1" --pr
-edefine="TM4C123GH6PM SETA 1" --predefine="_RTE_ SETA 1" --list=.\startup.lst s
-tartup.s
+ocal\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123 --predefine="__UVISIO
+N_VERSION SETA 538" --predefine="_RTE_ SETA 1" --predefine="TM4C123GH6PM SETA 1
+" --predefine="_RTE_ SETA 1" --list=.\startup.lst startup.s
 
 
 
@@ -2542,4 +2541,4 @@ Symbol: __use_two_region_memory
       None
 Comment: __use_two_region_memory unused
 2 symbols
-483 symbols in table
+482 symbols in table
