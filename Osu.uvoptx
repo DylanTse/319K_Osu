@@ -284,6 +284,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>collide</ItemText>
         </Ww>
+        <Ww>
+          <count>9</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>langauge</ItemText>
+        </Ww>
       </WatchWindow1>
       <MemoryWindow1>
         <Mm>

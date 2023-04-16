@@ -2,7 +2,7 @@
 // Runs on TM4C123
 // Dylan Tse & Pranav Kopparthy
 // ECE319K Lab 10 Project
-// Last Modified: 4/9/2023 
+// Last Modified: 4/14/2023 
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -35,8 +35,7 @@ void endScreen(void);
 #define MID_COORD_X 2048
 #define MID_COORD_Y 2048
 #define MAX_COORD 4095
-#define MAX_DELTA 400 // farthest mouse can move is a scalar of MAX_DELTA in a direction
-#define PHYSICAL_DIAGONAL 205 // sqrt(128^2 + 160^2) = 204.80 --> map full joystick range to display
+#define MAX_DELTA 150 // farthest mouse can move is a scalar of MAX_DELTA in a direction
 
 typedef enum {
 	False, True
@@ -66,6 +65,7 @@ typedef struct {
 } sprite_t;
 
 
+// CRITICAL INIT VALUES
 screenmode_t currScreen = START;
 screenmode_t prevScreen = -1; // set OG value to invalid comparison
 language_t langauge = ENGLISH;
@@ -73,9 +73,17 @@ difficulty_t difficulty = NORMAL;
 uint32_t joystickData[2];
 arrow_t dirPressed = -1; // default value is invalid comparison
 
+// SPRITE INITS
 sprite_t mouse; // mouse = user cursor
 sprite_t osuVals; //osu logo
-sprite_t clearCursorVals; // need to clear the cursor area behind
+sprite_t langPos;
+sprite_t difficultyPos;
+
+// USER SPECIFIC MATERIAL
+uint32_t uScore;
+const char *enMSG[4] = {"PAUSED", "YOUR SCORE: ", "BYE!", "THX"};
+const char *frMSG[4] = {"EN PAUSE", "TON SCORE: ", "SALUT!", "MERCI"};
+
 
 
 /*****INTERRUPT HANDLERS*****/
@@ -90,12 +98,11 @@ void GPIOPortE_Handler(void){
 	}
 }
 
-
+bool joyButton;
 void GPIOPortC_Handler(void){
 	// check PC6 (joystick 'IN' button)
 	GPIO_PORTC_ICR_R = 0x40;
-	// if currently on Start screen --> then pressing in goes MENU. if playing and press in --> then pressing in goes PAUSE
-	currScreen = (currScreen == START) ? MENU : PAUSE;
+	joyButton = True;
 }
 
 
@@ -103,18 +110,14 @@ void Timer1A_Handler(void){
   TIMER1_ICR_R = TIMER_ICR_TATOCINT; // acknowledge TIMER1A timeout
 	JoyStick_In(joystickData);
 	
+	int32_t scale_factor = (MAX_COORD / MAX_DELTA) + 1;
 	int32_t dx = joystickData[0] - MID_COORD_X;
 	dx = (abs(dx) > 50) ? dx : 0; // reduce no movement drifting
+	dx /= scale_factor;
 	int32_t dy = joystickData[1]- MID_COORD_Y;
 	dy = (abs(dy) > 50) ? dy : 0;
-	int32_t scale_factor = (MAX_COORD / MAX_DELTA) + 1;
-	
-	// scaling so that based on how far push joystick
-	dx /= scale_factor;
 	dy /= scale_factor;
-	int32_t mouseDX = (dx * PHYSICAL_DIAGONAL) / MAX_DELTA;
-	int32_t mouseDY = (dy * PHYSICAL_DIAGONAL) / MAX_DELTA;
-	
+		
 	// move mouse.x, mouse.y in direction of joystick
 	mouse.x *= 32; // convert 128x160 dimensions to 4096x4096 for pot
 	mouse.y *= 26; // convert 128x160 dimensions to 4096x4096 for pot
@@ -134,7 +137,7 @@ void Timer1A_Handler(void){
 	}	
 	
 	mouse.x = (mouse.x*128)/4096;
-	mouse.y = (mouse.y*159)/4096;
+	mouse.y = (mouse.y*158)/4096;
 }
 
 
@@ -146,7 +149,6 @@ void Timer0A_Handler(void){
 
 
 uint8_t hover(sprite_t cursor, sprite_t hitCircle);
-
 /*****MAIN STUFF*****/
 int main(void){
   DisableInterrupts();
@@ -160,48 +162,45 @@ int main(void){
 	EnableInterrupts();
 	
 	// default values
-	mouse.x = mouse.y = 65; // default mouse value is in center of screen
-	mouse.width = mouse.height = clearCursorVals.width = clearCursorVals.height = 20;
+	mouse.x = mouse.y = 20; // default mouse value is near center of screen
+	mouse.width = mouse.height = 20;
 	osuVals.x = 30; osuVals.y= 115;
 	osuVals.width = osuVals.height = 70;
-	clearCursorVals.x = clearCursorVals.y = 0; // start anywhere, will jump to prev cursor location
+	langPos.x = 20; langPos.y = 60; langPos.width = 90; langPos.height = 29;
+	difficultyPos.x = 20; difficultyPos.y = 115; difficultyPos.width = 90; difficultyPos.height = 29;
 	
-	while(1){
-		
-		ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
-		ST7735_DrawBitmap( mouse.x, mouse.y, clearCursor, mouse.width, mouse.height);
-		
-		if (currScreen != prevScreen){
-			switch (currScreen){
-				case START:
-					startScreen();
-					break;
-				case MENU:
-					menuScreen();
-					break;
-				case LANG_SELECT:
-					languageSelectScreen();
-					break;
-				case DIFF_SELECT:
-					difficultySelectScreen();
-					break;
-				case GAME:
-					gameScreen();
-					break;
-				case PAUSE:
-					pauseScreen();
-					break;
-				case END:
-					endScreen();
-					break;
-			}
-			//prevScreen = currScreen;
-		}
-		
+	
+	startScreen();
+	// busy wait until cursor over and click on Osu logo
+	while( !hover(mouse, osuVals) || !joyButton){
+			ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
 	}
+	menuScreen();
+	joyButton = False;
+	
+	screenmode_t option;
+	while(!joyButton){
+			ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
+			if(hover(mouse, langPos) && joyButton ){
+				option = LANG_SELECT;
+				break;
+			}
+	}
+	
+	if (option == LANG_SELECT){
+		languageSelectScreen();
+		while(dirPressed != UP || dirPressed != DOWN){
+			if (dirPressed == UP){langauge = ENGLISH; break;}
+			else if (dirPressed == DOWN){langauge = FRENCH; break;}
+		}
+	}
+	
+	
 }
 
 
+
+/*****SCREENS + HELPER FUNCTIONS*****/
 void startScreen(void){
   ST7735_FillScreen(0x0000); // set screen to black
 	ST7735_DrawBitmap(osuVals.x, osuVals.y, osuLogo, osuVals.width, osuVals.height);
@@ -209,48 +208,45 @@ void startScreen(void){
 	ST7735_OutString("Press joystick");
 	ST7735_SetCursor(4,13);
 	ST7735_OutString("down on Osu!");
-	
-	while(1){
-		bool collide = hover(mouse, osuVals);
-		if(collide == True){break;}
-		ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
-	}	
-	prevScreen = START;
-	ST7735_OutString("HOVER SUCCESSFUL");
 }
 
-void menuScreen(void){
+void menuScreen(void){	
   ST7735_FillScreen(0x0000); // set screen to black
 	ST7735_SetCursor(0,0);
-	ST7735_DrawBitmap(30,115, Lang, 50,20);
+	ST7735_DrawBitmap(langPos.x, langPos.y, Lang, langPos.width, langPos.height);
+	ST7735_DrawBitmap(difficultyPos.x, difficultyPos.y, Difficulty, difficultyPos.width, difficultyPos.height);
 }
 
-void languageSelectScreen(void){}
+void languageSelectScreen(void){
+	ST7735_FillScreen(0x0000);
+  ST7735_DrawBitmap(15, 60, ENlang, 100, 13);
+	ST7735_DrawBitmap(15, 90, FRlang, 100, 13);
+}
+
 void difficultySelectScreen(void){}
 void gameScreen(void){}
-void pauseScreen(void){}
-void endScreen(void){}
-
-
-bool valInRange(int32_t value, int32_t min, int32_t max){
-	return (value >= min) && (value <= max);
+	
+void pauseScreen(void){
+	ST7735_FillScreen(0x0000);
+	ST7735_SetCursor(2,5);
+	ST7735_OutString("PAUSED");
+	ST7735_SetCursor(2,7);
+	ST7735_OutString("Press any key");
+	ST7735_SetCursor(2,8);
+	ST7735_OutString("to resume");
 }
 	
-uint8_t hover(sprite_t cursor, sprite_t hitCircle){
-	bool xOverlap = False, yOverlap = False;
-	
-		// left edge, right edge, bottom edge, top edge
-	int32_t rect1_coords[4] = { cursor.x, cursor.x+cursor.width-1, cursor.y, cursor.y+cursor.height+1};
-	int32_t rect2_coords[4] = { hitCircle.x, hitCircle.x+hitCircle.width-1, hitCircle.y, hitCircle.y+hitCircle.height+1};
+void endScreen(void){
+	ST7735_FillScreen(0x0000);
+	ST7735_SetCursor(2,5);
+	ST7735_OutUDec(uScore);
+}
 
-	// Possible cases to consider for no overlap to occur
-	/*
-		1) Rect1 left edge > Rect2 right edge 
-		2) Rect1 right edge < Rect2 left edge 
-		3) Rect1 bottom edge > Rect2 top edge
-		4) Rect1 top edge < Rect2 bottom edge
-	*/
-	
+
+uint8_t hover(sprite_t cursor, sprite_t hitCircle){	
+	// left edge, right edge, bottom edge, top edge
+	int32_t rect1_coords[4] = { cursor.x, cursor.x+cursor.width-1, cursor.y+cursor.height-1, cursor.y};
+	int32_t rect2_coords[4] = { hitCircle.x, hitCircle.x+hitCircle.width-1, hitCircle.y+hitCircle.height-1, hitCircle.y};
 	if (rect1_coords[0] > rect2_coords[1] || rect1_coords[1] < rect2_coords[0] ){
 		return 0;
 	}
@@ -259,59 +255,3 @@ uint8_t hover(sprite_t cursor, sprite_t hitCircle){
 	}
 	return 1;
 }
-
-
-
-
-/*
-typedef enum {English, Spanish, Portuguese, French} Language_t;
-Language_t myLanguage=English;
-typedef enum {HELLO, GOODBYE, LANGUAGE} phrase_t;
-const char Hello_English[] ="Hello";
-const char Hello_Spanish[] ="\xADHola!";
-const char Hello_Portuguese[] = "Ol\xA0";
-const char Hello_French[] ="All\x83";
-const char Goodbye_English[]="Goodbye";
-const char Goodbye_Spanish[]="Adi\xA2s";
-const char Goodbye_Portuguese[] = "Tchau";
-const char Goodbye_French[] = "Au revoir";
-const char Language_English[]="English";
-const char Language_Spanish[]="Espa\xA4ol";
-const char Language_Portuguese[]="Portugu\x88s";
-const char Language_French[]="Fran\x87" "ais";
-const char *Phrases[3][4]={
-  {Hello_English,Hello_Spanish,Hello_Portuguese,Hello_French},
-  {Goodbye_English,Goodbye_Spanish,Goodbye_Portuguese,Goodbye_French},
-  {Language_English,Language_Spanish,Language_Portuguese,Language_French}
-};
-
-int main1(void){ char l;
-  DisableInterrupts();
-  TExaS_Init(NONE);       // Bus clock is 80 MHz 
-  Output_Init();
-  ST7735_FillScreen(0x0000);            // set screen to black
-  for(phrase_t myPhrase=HELLO; myPhrase<= GOODBYE; myPhrase++){
-    for(Language_t myL=English; myL<= French; myL++){
-         ST7735_OutString((char *)Phrases[LANGUAGE][myL]);
-      ST7735_OutChar(' ');
-         ST7735_OutString((char *)Phrases[myPhrase][myL]);
-      ST7735_OutChar(13);
-    }
-  }
-  ST7735_FillScreen(0x0000);       // set screen to black
-  l = 128;
-  while(1){
-    for(int j=0; j < 3; j++){
-      for(int i=0;i<16;i++){
-        ST7735_SetCursor(7*j+0,i);
-        ST7735_OutUDec(l);
-        ST7735_OutChar(' ');
-        ST7735_OutChar(' ');
-        ST7735_SetCursor(7*j+4,i);
-        ST7735_OutChar(l);
-        l++;
-      }
-    }
-  }  
-}
-*/
