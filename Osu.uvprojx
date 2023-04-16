@@ -460,6 +460,21 @@
               <FileType>1</FileType>
               <FilePath>.\JoyStick.c</FilePath>
             </File>
+            <File>
+              <FileName>Sound.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Sound.c</FilePath>
+            </File>
+            <File>
+              <FileName>Song.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Song.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer3A.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Timer3A.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

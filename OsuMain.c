@@ -17,6 +17,8 @@
 #include "EdgeTrigger.h"
 #include "Timer1.h"
 #include "Timer0.h"
+#include "Song.h"
+#include "Sound.h"
 
 
 /*****PROTOTYPES*****/
@@ -148,6 +150,8 @@ int main(void){
 	TExaS_Init(NONE); // Bus clock is 80 MHz
 		Output_Init();
 	ADC_Init();
+		Song_Init();
+		Sound_Init();
 		Wave_Init(); // init sound
 	EdgeTrigger_Init();
 	JoyStick_Init();
@@ -163,6 +167,7 @@ int main(void){
 	difficultyPos.x = 20; difficultyPos.y = 115; difficultyPos.width = 90; difficultyPos.height = 29;
 	
 	Wave_Hit();
+	Song_Init();
 	
 	startScreen();
 	// busy wait until cursor over and click on Osu logo
