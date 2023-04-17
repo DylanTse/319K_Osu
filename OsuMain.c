@@ -6,6 +6,7 @@
 
 #include <stdint.h>
 #include <stdlib.h>
+#include <math.h>
 #include "../inc/tm4c123gh6pm.h"
 #include "../inc/ST7735.h"
 #include "Random.h"
@@ -25,7 +26,6 @@
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
 void startScreen(void);
-void menuScreen(void);
 void languageSelectScreen(void);
 void difficultySelectScreen(void);
 void gameScreen(void);
@@ -38,13 +38,14 @@ void endScreen(void);
 #define MID_COORD_Y 2048
 #define MAX_COORD 4095
 #define MAX_DELTA 150 // farthest mouse can move is a scalar of MAX_DELTA in a direction
+double pi = 3.1415926535;
 
 typedef enum {
 	False, True
 } bool;
 
 typedef enum {
-	START, MENU, LANG_SELECT, DIFF_SELECT, GAME, PAUSE, END
+	START, LANG_SELECT, DIFF_SELECT, GAME, PAUSE, END
 } screenmode_t;
 
 typedef enum {
@@ -68,8 +69,6 @@ typedef struct {
 
 
 // CRITICAL INIT VALUES
-screenmode_t currScreen = START;
-screenmode_t prevScreen = -1; // set OG value to invalid comparison
 language_t langauge = ENGLISH;
 difficulty_t difficulty = NORMAL;
 uint32_t joystickData[2];
@@ -83,8 +82,8 @@ sprite_t difficultyPos;
 
 // USER SPECIFIC MATERIAL
 uint32_t uScore;
-const char *enMSG[4] = {"PAUSED", "YOUR SCORE: ", "BYE!", "THX"};
-const char *frMSG[4] = {"EN PAUSE", "TON SCORE: ", "SALUT!", "MERCI"};
+char* enMSG[] = {"PAUSED", "YOUR SCORE: ", "BYE!", "THX"};
+char* frMSG[] = {"EN PAUSE", "TON SCORE: ", "SALUT!", "MERCI"};
 
 
 
@@ -143,14 +142,44 @@ void Timer1A_Handler(void){
 }
 
 
+
+
+
+
+void drawSquare(int x, int y) {
+	ST7735_DrawBitmap(x, y, square, 40, 40);
+}
+
+void drawSquaresInCircle(int centerX, int centerY, int radius, int numSquares) {
+    // Calculate the angular increment between each square
+    double angleIncrement = 2*pi/numSquares;
+	
+		int i = 0;
+		while(i < numSquares){
+			if(hitCircleFlag == 2){
+				double angle = i * angleIncrement;
+        int x = centerX + (int)(radius * cos(angle));
+        int y = centerY + (int)(radius * sin(angle));
+				drawSquare(x, y);
+				hitCircleFlag = 0;
+				i++;
+			}
+		}
+}
+
+
+
+
+
+
 uint8_t hover(sprite_t cursor, sprite_t hitCircle);
+screenmode_t option;
 /*****MAIN STUFF*****/
 int main(void){
   DisableInterrupts();
 	TExaS_Init(NONE); // Bus clock is 80 MHz
 		Output_Init();
 	ADC_Init();
-		Song_Init();
 		Sound_Init();
 		Wave_Init(); // init sound
 	EdgeTrigger_Init();
@@ -161,41 +190,62 @@ int main(void){
 	// default values
 	mouse.x = mouse.y = 20; // default mouse value is near center of screen
 	mouse.width = mouse.height = 20;
-	osuVals.x = 30; osuVals.y= 115;
+	osuVals.x = 30; osuVals.y= 70;
 	osuVals.width = osuVals.height = 70;
-	langPos.x = 20; langPos.y = 60; langPos.width = 90; langPos.height = 29;
-	difficultyPos.x = 20; difficultyPos.y = 115; difficultyPos.width = 90; difficultyPos.height = 29;
-	
-	Wave_Hit();
-	Song_Init();
-	
+	langPos.x = 20; langPos.y = 100; langPos.width = 90; langPos.height = 29;
+	difficultyPos.x = 20; difficultyPos.y = 140; difficultyPos.width = 90; difficultyPos.height = 29;
+
 	startScreen();
-	// busy wait until cursor over and click on Osu logo
-	while( !hover(mouse, osuVals) || !joyButton){
-			ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
-	}
-	menuScreen();
-	joyButton = False;
-	
-	screenmode_t option;
+
+	// wait for someone to choose menu option or play game
 	while(!joyButton){
 			ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
+			if(hover(mouse, osuVals) && joyButton ){
+				option = GAME;
+				break;
+			} 
 			if(hover(mouse, langPos) && joyButton ){
 				option = LANG_SELECT;
 				break;
 			}
+			if(hover(mouse, difficultyPos) && joyButton ){
+				option = DIFF_SELECT;
+				break;
+			}
 	}
+	joyButton = False;
+	
 	
 	if (option == LANG_SELECT){
 		languageSelectScreen();
+		while(dirPressed != UP || dirPressed != DOWN){
+			if (dirPressed == UP){langauge = ENGLISH;}
+			else if (dirPressed == DOWN){langauge = FRENCH;}
+		}
+	}
+	
+	if (option == DIFF_SELECT){
+		difficultySelectScreen();
+		Song_Init();
+		drawSquaresInCircle(40, 100, 50, 8);
 		while(dirPressed != UP || dirPressed != DOWN){
 			if (dirPressed == UP){langauge = ENGLISH; break;}
 			else if (dirPressed == DOWN){langauge = FRENCH; break;}
 		}
 	}
+	if (option == GAME){
+		ST7735_FillScreen(0x0000);
+		ST7735_SetCursor(0,0);
+		//Song_Init();
+		//drawSquaresInCircle(40, 100, 50, 8);
+		ST7735_OutString("Ur a bitch");
+	}
 	
 	
 }
+
+
+
 
 
 
@@ -207,14 +257,11 @@ void startScreen(void){
 	ST7735_OutString("Press joystick");
 	ST7735_SetCursor(4,13);
 	ST7735_OutString("down on Osu!");
-}
-
-void menuScreen(void){	
-  ST7735_FillScreen(0x0000); // set screen to black
-	ST7735_SetCursor(0,0);
+	
 	ST7735_DrawBitmap(langPos.x, langPos.y, Lang, langPos.width, langPos.height);
 	ST7735_DrawBitmap(difficultyPos.x, difficultyPos.y, Difficulty, difficultyPos.width, difficultyPos.height);
 }
+
 
 void languageSelectScreen(void){
 	ST7735_FillScreen(0x0000);
@@ -222,7 +269,23 @@ void languageSelectScreen(void){
 	ST7735_DrawBitmap(15, 90, FRlang, 100, 13);
 }
 
-void difficultySelectScreen(void){}
+void difficultySelectScreen(void){
+	ST7735_FillScreen(0x0000);
+	if (langauge == ENGLISH){
+		ST7735_SetCursor(2,6);
+		ST7735_OutString( "UP for EASY" );
+		ST7735_SetCursor(2,9);
+		ST7735_OutString( "DOWN for HARD" );
+	}
+	else {
+		ST7735_SetCursor(2,6);
+		ST7735_OutString( "HAUT pour FACILE" );
+		ST7735_SetCursor(2,9);
+		ST7735_OutString( "BAS pour DIFFICILE" );
+	}
+}
+
+
 void gameScreen(void){}
 	
 void pauseScreen(void){
@@ -244,8 +307,9 @@ void endScreen(void){
 
 uint8_t hover(sprite_t cursor, sprite_t hitCircle){	
 	// left edge, right edge, bottom edge, top edge
-	int32_t rect1_coords[4] = { cursor.x, cursor.x+cursor.width-1, cursor.y+cursor.height-1, cursor.y};
-	int32_t rect2_coords[4] = { hitCircle.x, hitCircle.x+hitCircle.width-1, hitCircle.y+hitCircle.height-1, hitCircle.y};
+	int32_t rect1_coords[4] = { cursor.x, cursor.x+cursor.width-1, cursor.y, cursor.y-cursor.height+1};
+	int32_t rect2_coords[4] = { hitCircle.x, hitCircle.x+hitCircle.width-1, hitCircle.y, hitCircle.y-hitCircle.height+1};
+	
 	if (rect1_coords[0] > rect2_coords[1] || rect1_coords[1] < rect2_coords[0] ){
 		return 0;
 	}

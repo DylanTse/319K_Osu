@@ -16,6 +16,8 @@
 
 #ifndef SONG_H
 #define SONG_H
+
+extern short hitCircleFlag;
 void Song_Init(void);
 // Play your favorite song, while button pushed or until end
 void Song_Play(void);

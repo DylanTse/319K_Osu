@@ -18,6 +18,8 @@ void Song_Play(void);
 void Timer3A_Init( void(*task)(void), uint32_t period, uint32_t priority);
 void Timer3A_Stop(void);
 
+short hitCircleFlag;
+
 // TWINKLE TWINKLE LITTLE STAR
 const uint16_t Star[42] = {
 2389, 2389, 3189, 3189, 2841, 2841, 3189,
@@ -33,16 +35,17 @@ uint8_t i;
 
 void Song_Init(void){
   i = 0;
-	
+	hitCircleFlag = 0;
 	EnableInterrupts();
 	Timer3A_Init(Song_Play, 33321450, 2);
 	
 }
 
-// Play song, while button pushed or until end
+// Play song
 void Song_Play(void){
   Sound_Start(Star[i]);
 	i = (i + 1) % 42;
+	hitCircleFlag += 1;
 }
 
 // Stop song
