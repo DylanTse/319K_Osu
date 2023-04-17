@@ -53,7 +53,7 @@ typedef enum {
 } language_t;
 
 typedef enum {
-	EASY, NORMAL, HARD
+	NORMAL, HARD
 } difficulty_t;
 
 typedef enum {
@@ -143,35 +143,9 @@ void Timer1A_Handler(void){
 
 
 
-
-
-
-void drawSquare(int x, int y) {
-	ST7735_DrawBitmap(x, y, square, 40, 40);
-}
-
-void drawSquaresInCircle(int centerX, int centerY, int radius, int numSquares) {
-    // Calculate the angular increment between each square
-    double angleIncrement = 2*pi/numSquares;
-	
-		int i = 0;
-		while(i < numSquares){
-			if(hitCircleFlag == 2){
-				double angle = i * angleIncrement;
-        int x = centerX + (int)(radius * cos(angle));
-        int y = centerY + (int)(radius * sin(angle));
-				drawSquare(x, y);
-				hitCircleFlag = 0;
-				i++;
-			}
-		}
-}
-
-
-
-
-
-
+void menuSelectOption(void);
+void drawSquare(int x, int y);
+void drawSquaresInCircle(int centerX, int centerY, int radius, int numSquares);
 uint8_t hover(sprite_t cursor, sprite_t hitCircle);
 screenmode_t option;
 /*****MAIN STUFF*****/
@@ -196,49 +170,35 @@ int main(void){
 	difficultyPos.x = 20; difficultyPos.y = 140; difficultyPos.width = 90; difficultyPos.height = 29;
 
 	startScreen();
-
 	// wait for someone to choose menu option or play game
-	while(!joyButton){
-			ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
-			if(hover(mouse, osuVals) && joyButton ){
-				option = GAME;
-				break;
-			} 
-			if(hover(mouse, langPos) && joyButton ){
-				option = LANG_SELECT;
-				break;
+	while(option != GAME){
+		menuSelectOption();
+		if (option == LANG_SELECT){
+			option = -1;
+			languageSelectScreen();
+			while(dirPressed != UP || dirPressed != DOWN){
+				if (dirPressed == UP){langauge = ENGLISH; dirPressed = -1; break;}
+				else if (dirPressed == DOWN){langauge = FRENCH; dirPressed = -1; break;}
 			}
-			if(hover(mouse, difficultyPos) && joyButton ){
-				option = DIFF_SELECT;
-				break;
+			startScreen();
+		}
+		
+		else if (option == DIFF_SELECT){
+			difficultySelectScreen();
+			option = -1;
+			while(dirPressed != UP || dirPressed != DOWN){
+				if (dirPressed == UP){difficulty = NORMAL; dirPressed = -1; break;}
+				else if (dirPressed == DOWN){difficulty = HARD; dirPressed = -1; break;}
 			}
-	}
-	joyButton = False;
-	
-	
-	if (option == LANG_SELECT){
-		languageSelectScreen();
-		while(dirPressed != UP || dirPressed != DOWN){
-			if (dirPressed == UP){langauge = ENGLISH;}
-			else if (dirPressed == DOWN){langauge = FRENCH;}
+			startScreen();
 		}
-	}
-	
-	if (option == DIFF_SELECT){
-		difficultySelectScreen();
-		Song_Init();
-		drawSquaresInCircle(40, 100, 50, 8);
-		while(dirPressed != UP || dirPressed != DOWN){
-			if (dirPressed == UP){langauge = ENGLISH; break;}
-			else if (dirPressed == DOWN){langauge = FRENCH; break;}
+		else if (option == GAME){
+			ST7735_FillScreen(0x0000);
+			ST7735_SetCursor(0,0);
+			Song_Init();
+			drawSquaresInCircle(40, 100, 50, 8);
+			ST7735_OutString("Game");
 		}
-	}
-	if (option == GAME){
-		ST7735_FillScreen(0x0000);
-		ST7735_SetCursor(0,0);
-		//Song_Init();
-		//drawSquaresInCircle(40, 100, 50, 8);
-		ST7735_OutString("Ur a bitch");
 	}
 	
 	
@@ -273,13 +233,13 @@ void difficultySelectScreen(void){
 	ST7735_FillScreen(0x0000);
 	if (langauge == ENGLISH){
 		ST7735_SetCursor(2,6);
-		ST7735_OutString( "UP for EASY" );
+		ST7735_OutString( "UP for NORMAL" );
 		ST7735_SetCursor(2,9);
 		ST7735_OutString( "DOWN for HARD" );
 	}
 	else {
 		ST7735_SetCursor(2,6);
-		ST7735_OutString( "HAUT pour FACILE" );
+		ST7735_OutString( "HAUT pour NORMAL" );
 		ST7735_SetCursor(2,9);
 		ST7735_OutString( "BAS pour DIFFICILE" );
 	}
@@ -302,6 +262,51 @@ void endScreen(void){
 	ST7735_FillScreen(0x0000);
 	ST7735_SetCursor(2,5);
 	ST7735_OutUDec(uScore);
+}
+
+
+
+void menuSelectOption(void){
+	while(!joyButton){
+			ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
+			if(hover(mouse, osuVals) && joyButton ){
+				option = GAME;
+				break;
+			} 
+			else if(hover(mouse, langPos) && joyButton ){
+				option = LANG_SELECT;
+				break;
+			}
+			else if(hover(mouse, difficultyPos) && joyButton ){
+				option = DIFF_SELECT;
+				break;
+			}
+	}
+	joyButton = False;
+}
+
+
+
+// The following two functions are for displaying the hit squares in a circle pattern
+void drawSquare(int x, int y) {
+	ST7735_DrawBitmap(x, y, square, 40, 40);
+}
+
+void drawSquaresInCircle(int centerX, int centerY, int radius, int numSquares) {
+    // Calculate the angular increment between each square
+    double angleIncrement = 2*pi/numSquares;
+	
+		int i = 0;
+		while(i < numSquares){
+			if(hitCircleFlag == 2){
+				double angle = i * angleIncrement;
+        int x = centerX + (int)(radius * cos(angle));
+        int y = centerY + (int)(radius * sin(angle));
+				drawSquare(x, y);
+				hitCircleFlag = 0;
+				i++;
+			}
+		}
 }
 
 
