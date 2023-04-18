@@ -65,6 +65,8 @@ typedef struct {
 	int32_t y;
 	uint32_t width;
 	uint32_t height;
+	arrow_t direction;
+	bool status; // if can hit or not hit
 } sprite_t;
 
 
@@ -79,11 +81,13 @@ sprite_t mouse; // mouse = user cursor
 sprite_t osuVals; //osu logo
 sprite_t langPos;
 sprite_t difficultyPos;
+sprite_t menuPos;
 
 // USER SPECIFIC MATERIAL
-uint32_t uScore;
+uint32_t score;
 char* enMSG[] = {"PAUSED", "YOUR SCORE: ", "BYE!", "THX"};
 char* frMSG[] = {"EN PAUSE", "TON SCORE: ", "SALUT!", "MERCI"};
+screenmode_t option;
 
 
 
@@ -143,11 +147,32 @@ void Timer1A_Handler(void){
 
 
 
+void Delay100ms(uint32_t count){
+	uint32_t volatile time;
+  while(count>0){
+    time = 727240;  // 0.1sec at 80 MHz
+    while(time){
+      time--;
+    }
+    count--;
+  }
+}
+
+void GPIO_PortD_Init(void){
+	volatile uint32_t delay;
+	SYSCTL_RCGCGPIO_R |= 0x0F;
+	delay = SYSCTL_RCGCGPIO_R;
+	GPIO_PORTD_DEN_R |= 0x43;
+	GPIO_PORTD_DIR_R |= 0x43;
+}
+
+
+
+
 void menuSelectOption(void);
-void drawSquare(int x, int y);
+void drawSquare(int x, int y, const unsigned short *src);
 void drawSquaresInCircle(int centerX, int centerY, int radius, int numSquares);
 uint8_t hover(sprite_t cursor, sprite_t hitCircle);
-screenmode_t option;
 /*****MAIN STUFF*****/
 int main(void){
   DisableInterrupts();
@@ -159,6 +184,8 @@ int main(void){
 	EdgeTrigger_Init();
 	JoyStick_Init();
 	Timer1_Init(80000000/30, 1); // sample at 30 Hz
+	Random_Init(21187); // random seed
+	GPIO_PortD_Init();
 	EnableInterrupts();
 	
 	// default values
@@ -168,10 +195,12 @@ int main(void){
 	osuVals.width = osuVals.height = 70;
 	langPos.x = 20; langPos.y = 100; langPos.width = 90; langPos.height = 29;
 	difficultyPos.x = 20; difficultyPos.y = 140; difficultyPos.width = 90; difficultyPos.height = 29;
+	menuPos.x = 20; menuPos.y = 125;
+	menuPos.width=90; menuPos.height=29;
 
 	startScreen();
 	// wait for someone to choose menu option or play game
-	while(option != GAME){
+	while(1){
 		menuSelectOption();
 		if (option == LANG_SELECT){
 			option = -1;
@@ -192,24 +221,35 @@ int main(void){
 			}
 			startScreen();
 		}
+		
 		else if (option == GAME){
+			Wave_Hooray();
+			Delay100ms(20);
+			option = -1;
 			ST7735_FillScreen(0x0000);
-			ST7735_SetCursor(0,0);
 			Song_Init();
-			drawSquaresInCircle(40, 100, 50, 8);
-			ST7735_OutString("Game");
+			ST7735_SetCursor(0,0);
+				
+			for(int i = 0; i < 7; i++){
+				drawSquaresInCircle(43, 100, 47, 6);
+			}
+			
+			endScreen();
+			while(!hover(mouse, menuPos) || !joyButton){
+				ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
+			}
+			score = 0;
+			startScreen();
 		}
 	}
-	
 	
 }
 
 
 
 
-
-
 /*****SCREENS + HELPER FUNCTIONS*****/
+
 void startScreen(void){
   ST7735_FillScreen(0x0000); // set screen to black
 	ST7735_DrawBitmap(osuVals.x, osuVals.y, osuLogo, osuVals.width, osuVals.height);
@@ -232,9 +272,9 @@ void languageSelectScreen(void){
 void difficultySelectScreen(void){
 	ST7735_FillScreen(0x0000);
 	if (langauge == ENGLISH){
-		ST7735_SetCursor(2,6);
+		ST7735_SetCursor(3,6);
 		ST7735_OutString( "UP for NORMAL" );
-		ST7735_SetCursor(2,9);
+		ST7735_SetCursor(3,9);
 		ST7735_OutString( "DOWN for HARD" );
 	}
 	else {
@@ -244,9 +284,6 @@ void difficultySelectScreen(void){
 		ST7735_OutString( "BAS pour DIFFICILE" );
 	}
 }
-
-
-void gameScreen(void){}
 	
 void pauseScreen(void){
 	ST7735_FillScreen(0x0000);
@@ -260,25 +297,43 @@ void pauseScreen(void){
 	
 void endScreen(void){
 	ST7735_FillScreen(0x0000);
-	ST7735_SetCursor(2,5);
-	ST7735_OutUDec(uScore);
+	if (langauge == ENGLISH){
+		ST7735_SetCursor(2,6);
+		ST7735_OutString("YOUR SCORE: ");
+		ST7735_OutUDec(score);
+	}
+	else {
+		ST7735_SetCursor(3,6);
+		ST7735_OutString("TON SCORE: ");
+		ST7735_OutUDec(score);
+	}
+	ST7735_DrawBitmap(20, 125, menuButton, 90, 29);
 }
 
 
 
 void menuSelectOption(void){
 	while(!joyButton){
+			GPIO_PORTD_DATA_R = 0x00;
+			//ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
 			ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height);
 			if(hover(mouse, osuVals) && joyButton ){
 				option = GAME;
+				GPIO_PORTD_DATA_R = 0x02;
+				Wave_Hit();
+				GPIO_PORTD_DATA_R = 0x00;
 				break;
 			} 
 			else if(hover(mouse, langPos) && joyButton ){
 				option = LANG_SELECT;
+				GPIO_PORTD_DATA_R = 0x02;
+				Wave_Hit();
 				break;
 			}
 			else if(hover(mouse, difficultyPos) && joyButton ){
 				option = DIFF_SELECT;
+				GPIO_PORTD_DATA_R = 0x02;
+				Wave_Hit();
 				break;
 			}
 	}
@@ -288,21 +343,69 @@ void menuSelectOption(void){
 
 
 // The following two functions are for displaying the hit squares in a circle pattern
-void drawSquare(int x, int y) {
-	ST7735_DrawBitmap(x, y, square, 40, 40);
+void drawSquare(int x, int y, const unsigned short *src) {
+	ST7735_DrawBitmap(x, y, src, 40, 40);
 }
 
+sprite_t hitSquare;
 void drawSquaresInCircle(int centerX, int centerY, int radius, int numSquares) {
     // Calculate the angular increment between each square
     double angleIncrement = 2*pi/numSquares;
 	
 		int i = 0;
 		while(i < numSquares){
+			ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height );
+			
 			if(hitCircleFlag == 2){
+				
 				double angle = i * angleIncrement;
         int x = centerX + (int)(radius * cos(angle));
         int y = centerY + (int)(radius * sin(angle));
-				drawSquare(x, y);
+				
+				int rand = Random() % 4; //0,1,2,3
+				switch(rand){
+					case 0:
+						drawSquare(x, y, mUP);
+						hitSquare.x = x; hitSquare.y = y; hitSquare.height = hitSquare.width = 40; hitSquare.direction = UP; hitSquare.status = True;
+						if(hover(mouse, hitSquare) && hitSquare.status){
+							ST7735_FillRect(x, y-hitSquare.height, 40, 41, ST7735_BLACK);
+							score++;
+							dirPressed = -1;
+							hitSquare.status = False;
+						}
+						break;
+					case 1:
+						drawSquare(x, y, mDOWN);
+						hitSquare.x = x; hitSquare.y = y; hitSquare.height = hitSquare.width = 40; hitSquare.direction = DOWN; hitSquare.status = True;
+						if(hover(mouse, hitSquare) && hitSquare.status){
+							ST7735_FillRect(x, y-hitSquare.height, 40, 41, ST7735_BLACK);
+							score++;
+							dirPressed = -1;
+							hitSquare.status = False;
+						}
+						break;
+					case 2:
+						drawSquare(x, y, mLEFT);
+						hitSquare.x = x; hitSquare.y = y; hitSquare.height = hitSquare.width = 40; hitSquare.direction = LEFT; hitSquare.status = True;
+						if(hover(mouse, hitSquare) && hitSquare.status){
+							ST7735_FillRect(x, y-hitSquare.height, 40, 41, ST7735_BLACK);
+							score++;
+							dirPressed = -1;
+							hitSquare.status = False;
+						}
+						break;
+					case 3:
+						drawSquare(x, y, mRIGHT);
+						hitSquare.x = x; hitSquare.y = y; hitSquare.height = hitSquare.width = 40; hitSquare.direction = RIGHT; hitSquare.status = True;
+						if(hover(mouse, hitSquare) && hitSquare.status){
+							ST7735_FillRect(x, y-hitSquare.height, 40, 41, ST7735_BLACK);
+							score++;
+							dirPressed = -1;
+							hitSquare.status = False;
+						}
+						break;
+				}
+				
 				hitCircleFlag = 0;
 				i++;
 			}

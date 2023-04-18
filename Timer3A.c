@@ -55,5 +55,5 @@ void Timer3A_Handler(void){
 
 void Timer3A_Stop(void){
   NVIC_DIS1_R = 1<<(35-32);        // 9) disable interrupt 35in NVIC
-  TIMER3_CTL_R = 0x00000000;       // 10) disable timer4A
+  TIMER3_CTL_R = 0x00000000;       // 10) disable timer3A
 }

@@ -7,17 +7,15 @@
 #include <stdint.h>
 #include "../inc/tm4c123gh6pm.h"
 
-void (*PeriodicTask0)(void);
 // ***************** Timer0_Init ****************
 // Activate TIMER0 interrupts to run user task periodically
 // Inputs:  period in units (1/clockfreq)
 //          priority is 0 (high) to 7 (low)
 // Outputs: none
-void Timer0_Init(void(*task)(void), uint32_t period, uint32_t priority){
+void Timer0_Init(uint32_t period, uint32_t priority){
   volatile int delay;
   SYSCTL_RCGCTIMER_R |= 0x01;   // 0) activate TIMER0
   delay = SYSCTL_RCGCTIMER_R;
-	PeriodicTask0 = task;
   TIMER0_CTL_R = 0x00000000;    // 1) disable TIMER0A during setup
   TIMER0_CFG_R = 0x00000000;    // 2) configure for 32-bit mode
   TIMER0_TAMR_R = 0x00000002;   // 3) configure for periodic mode, default down-count settings
