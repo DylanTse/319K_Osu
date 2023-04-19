@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Osu.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Osu.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Tue Apr 18 03:32:27 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Tue Apr 18 15:08:08 2023
 <BR><P>
-<H3>Maximum Stack Usage =        448 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        568 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; drawSquaresInCircle &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul
 <P>
@@ -13,19 +13,19 @@ __rt_entry_main &rArr; main &rArr; drawSquaresInCircle &rArr; sin &rArr; __ieee7
 Functions with no stack information
 </H3><UL>
  <LI><a href="#[0]">Reset_Handler</a>
- <LI><a href="#[b5]">DisableInterrupts</a>
- <LI><a href="#[ae]">EnableInterrupts</a>
+ <LI><a href="#[b6]">DisableInterrupts</a>
+ <LI><a href="#[af]">EnableInterrupts</a>
  <LI><a href="#[119]">StartCritical</a>
  <LI><a href="#[11a]">EndCritical</a>
  <LI><a href="#[11b]">WaitForInterrupt</a>
  <LI><a href="#[97]">__user_initial_stackheap</a>
  <LI><a href="#[d5]">Random_Init</a>
  <LI><a href="#[11c]">Random32</a>
- <LI><a href="#[cd]">Random</a>
+ <LI><a href="#[11d]">Random</a>
  <LI><a href="#[da]">SPIOutCommand</a>
  <LI><a href="#[db]">SPIOutData</a>
  <LI><a href="#[ac]">Dec2String</a>
- <LI><a href="#[11d]">Fix2String</a>
+ <LI><a href="#[11e]">Fix2String</a>
 </UL>
 </UL>
 <P>
@@ -684,7 +684,7 @@ Global Symbols
 <P><STRONG><a name="[116]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[8c]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 448 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 568 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; drawSquaresInCircle &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -707,16 +707,16 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
 </UL>
 
-<P><STRONG><a name="[b5]"></a>DisableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
+<P><STRONG><a name="[b6]"></a>DisableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
 </UL>
 
-<P><STRONG><a name="[ae]"></a>EnableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Start
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Song_Init
+<P><STRONG><a name="[af]"></a>EnableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Start
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Song_Init
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
 </UL>
 
 <P><STRONG><a name="[119]"></a>StartCritical</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
@@ -735,9 +735,7 @@ Global Symbols
 
 <P><STRONG><a name="[11c]"></a>Random32</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, random.o(.text), UNUSED)
 
-<P><STRONG><a name="[cd]"></a>Random</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, random.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
-</UL>
+<P><STRONG><a name="[11d]"></a>Random</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, random.o(.text), UNUSED)
 
 <P><STRONG><a name="[da]"></a>SPIOutCommand</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, busywait.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writecommand
@@ -751,17 +749,17 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_OutUDec
 </UL>
 
-<P><STRONG><a name="[11d]"></a>Fix2String</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, stringconversion.o(.text), UNUSED)
+<P><STRONG><a name="[11e]"></a>Fix2String</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, stringconversion.o(.text), UNUSED)
 
-<P><STRONG><a name="[bb]"></a>abs</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, abs.o(.text))
+<P><STRONG><a name="[bc]"></a>abs</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, abs.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1A_Handler
 </UL>
 
-<P><STRONG><a name="[11e]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[11f]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[11f]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[120]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[120]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[121]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
 <P><STRONG><a name="[93]"></a>__read_errno</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, _rserrno.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_errno_addr
@@ -772,8 +770,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_errno_addr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
+<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
 </UL>
 
 <P><STRONG><a name="[94]"></a>__aeabi_errno_addr</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text))
@@ -781,17 +779,17 @@ Global Symbols
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__read_errno
 </UL>
 
-<P><STRONG><a name="[121]"></a>__errno$intlibspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text), UNUSED)
+<P><STRONG><a name="[122]"></a>__errno$intlibspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text), UNUSED)
 
-<P><STRONG><a name="[122]"></a>__rt_errno_addr$intlibspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text), UNUSED)
+<P><STRONG><a name="[123]"></a>__rt_errno_addr$intlibspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text), UNUSED)
 
-<P><STRONG><a name="[123]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[124]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[96]"></a>__user_perproc_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[124]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[125]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[89]"></a>__user_setup_stackheap</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, sys_stackheap_outer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -816,30 +814,30 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
 </UL>
 
-<P><STRONG><a name="[125]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[126]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[126]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[127]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[127]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
+<P><STRONG><a name="[128]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[b9]"></a>ADC1_Init</STRONG> (Thumb, 252 bytes, Stack size 4 bytes, texas.o(.text.ADC1_Init))
+<P><STRONG><a name="[ba]"></a>ADC1_Init</STRONG> (Thumb, 252 bytes, Stack size 4 bytes, texas.o(.text.ADC1_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = ADC1_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
+<BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
 </UL>
 
 <P><STRONG><a name="[d1]"></a>ADC_Init</STRONG> (Thumb, 256 bytes, Stack size 0 bytes, adc.o(.text.ADC_Init))
 <BR><BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b2]"></a>DAC_Init</STRONG> (Thumb, 74 bytes, Stack size 4 bytes, dac.o(.text.DAC_Init))
+<P><STRONG><a name="[b3]"></a>DAC_Init</STRONG> (Thumb, 74 bytes, Stack size 4 bytes, dac.o(.text.DAC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = DAC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Init
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Init
+<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Init
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Init
 </UL>
 
-<P><STRONG><a name="[b3]"></a>DAC_Out</STRONG> (Thumb, 20 bytes, Stack size 4 bytes, dac.o(.text.DAC_Out))
+<P><STRONG><a name="[b4]"></a>DAC_Out</STRONG> (Thumb, 20 bytes, Stack size 4 bytes, dac.o(.text.DAC_Out))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = DAC_Out
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
@@ -852,7 +850,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c2]"></a>Delay1ms</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, st7735.o(.text.Delay1ms))
+<P><STRONG><a name="[c3]"></a>Delay1ms</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, st7735.o(.text.Delay1ms))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Delay1ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commandList
@@ -877,7 +875,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ba]"></a>JoyStick_In</STRONG> (Thumb, 82 bytes, Stack size 4 bytes, joystick.o(.text.JoyStick_In))
+<P><STRONG><a name="[bb]"></a>JoyStick_In</STRONG> (Thumb, 82 bytes, Stack size 4 bytes, joystick.o(.text.JoyStick_In))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = JoyStick_In
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1A_Handler
@@ -914,16 +912,16 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b6]"></a>PLL_Init</STRONG> (Thumb, 138 bytes, Stack size 8 bytes, pll.o(.text.PLL_Init))
+<P><STRONG><a name="[b7]"></a>PLL_Init</STRONG> (Thumb, 138 bytes, Stack size 8 bytes, pll.o(.text.PLL_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = PLL_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
+<BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
 </UL>
 
-<P><STRONG><a name="[b8]"></a>PeriodicTask2_Init</STRONG> (Thumb, 232 bytes, Stack size 20 bytes, texas.o(.text.PeriodicTask2_Init))
+<P><STRONG><a name="[b9]"></a>PeriodicTask2_Init</STRONG> (Thumb, 232 bytes, Stack size 20 bytes, texas.o(.text.PeriodicTask2_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = PeriodicTask2_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
+<BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
 </UL>
 
 <P><STRONG><a name="[9c]"></a>ST7735_DrawBitmap</STRONG> (Thumb, 594 bytes, Stack size 32 bytes, st7735.o(.text.ST7735_DrawBitmap))
@@ -934,9 +932,8 @@ Global Symbols
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writedata
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setAddrWindow
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquare
+<BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquare
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;endScreen
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;languageSelectScreen
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menuSelectOption
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startScreen
@@ -983,7 +980,7 @@ Global Symbols
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setAddrWindow
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawCharS
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillScreen
 </UL>
 
@@ -995,7 +992,8 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;endScreen
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;difficultySelectScreen
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;difficultySelectScreen
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;languageSelectScreen
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startScreen
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Output_Init
@@ -1033,7 +1031,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_OutChar
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;endScreen
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;difficultySelectScreen
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;difficultySelectScreen
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startScreen
 </UL>
 
@@ -1053,7 +1052,8 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;endScreen
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;difficultySelectScreen
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;difficultySelectScreen
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startScreen
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1061,18 +1061,30 @@ Global Symbols
 <P><STRONG><a name="[9e]"></a>ST7735_SwapColor</STRONG> (Thumb, 28 bytes, Stack size 4 bytes, st7735.o(.text.ST7735_SwapColor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = ST7735_SwapColor
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap
+<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_TransparentDrawBitmap
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap
+</UL>
+
+<P><STRONG><a name="[ad]"></a>ST7735_TransparentDrawBitmap</STRONG> (Thumb, 708 bytes, Stack size 40 bytes, st7735.o(.text.ST7735_TransparentDrawBitmap))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80 + Unknown Stack Size
+<LI>Call Chain = ST7735_TransparentDrawBitmap &rArr; setAddrWindow &rArr; writedata
+</UL>
+<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_SwapColor
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writedata
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setAddrWindow
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
 </UL>
 
 <P><STRONG><a name="[82]"></a>Scope</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, texas.o(.text.Scope))
 <BR>[Address Reference Count : 1]<UL><LI> texas.o(.text.TExaS_Init)
 </UL>
-<P><STRONG><a name="[ad]"></a>Song_Init</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, song.o(.text.Song_Init))
+<P><STRONG><a name="[ae]"></a>Song_Init</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, song.o(.text.Song_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20 + Unknown Stack Size
 <LI>Call Chain = Song_Init &rArr; Timer3A_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer3A_Init
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
+<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer3A_Init
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1081,23 +1093,23 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 32 + Unknown Stack Size
 <LI>Call Chain = Song_Play &rArr; Sound_Start
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Start
+<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Start
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> song.o(.text.Song_Init)
 </UL>
-<P><STRONG><a name="[b1]"></a>Sound_Init</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, sound.o(.text.Sound_Init))
+<P><STRONG><a name="[b2]"></a>Sound_Init</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, sound.o(.text.Sound_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = Sound_Init &rArr; DAC_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_Init
+<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b0]"></a>Sound_Start</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, sound.o(.text.Sound_Start))
+<P><STRONG><a name="[b1]"></a>Sound_Start</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, sound.o(.text.Sound_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16 + Unknown Stack Size
 <LI>Call Chain = Sound_Start
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
+<BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Song_Play
 </UL>
@@ -1105,20 +1117,20 @@ Global Symbols
 <P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, sound.o(.text.SysTick_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SysTick_Handler &rArr; DAC_Out
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_Out
+<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_Out
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
-<P><STRONG><a name="[b4]"></a>TExaS_Init</STRONG> (Thumb, 360 bytes, Stack size 16 bytes, texas.o(.text.TExaS_Init))
+<P><STRONG><a name="[b5]"></a>TExaS_Init</STRONG> (Thumb, 360 bytes, Stack size 16 bytes, texas.o(.text.TExaS_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36 + Unknown Stack Size
 <LI>Call Chain = TExaS_Init &rArr; PeriodicTask2_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLL_Init
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Init
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART0_Init
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PeriodicTask2_Init
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableInterrupts
+<BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLL_Init
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Init
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART0_Init
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PeriodicTask2_Init
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableInterrupts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1126,8 +1138,8 @@ Global Symbols
 <P><STRONG><a name="[1f]"></a>Timer1A_Handler</STRONG> (Thumb, 368 bytes, Stack size 40 bytes, osumain.o(.text.Timer1A_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Timer1A_Handler &rArr; JoyStick_In
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;abs
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JoyStick_In
+<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;abs
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JoyStick_In
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
@@ -1140,14 +1152,14 @@ Global Symbols
 <P><STRONG><a name="[21]"></a>Timer2A_Handler</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, wave.o(.text.Timer2A_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Timer2A_Handler &rArr; DAC_Out
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_Out
+<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_Out
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
-<P><STRONG><a name="[c0]"></a>Timer2A_Init</STRONG> (Thumb, 136 bytes, Stack size 12 bytes, wave.o(.text.Timer2A_Init))
+<P><STRONG><a name="[c1]"></a>Timer2A_Init</STRONG> (Thumb, 136 bytes, Stack size 12 bytes, wave.o(.text.Timer2A_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = Timer2A_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Init
+<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Init
 </UL>
 
 <P><STRONG><a name="[2d]"></a>Timer3A_Handler</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, timer3a.o(.text.Timer3A_Handler))
@@ -1155,10 +1167,10 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
-<P><STRONG><a name="[af]"></a>Timer3A_Init</STRONG> (Thumb, 158 bytes, Stack size 12 bytes, timer3a.o(.text.Timer3A_Init))
+<P><STRONG><a name="[b0]"></a>Timer3A_Init</STRONG> (Thumb, 158 bytes, Stack size 12 bytes, timer3a.o(.text.Timer3A_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = Timer3A_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Song_Init
+<BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Song_Init
 </UL>
 
 <P><STRONG><a name="[4e]"></a>Timer5A_Handler</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, texas.o(.text.Timer5A_Handler))
@@ -1166,48 +1178,49 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
-<P><STRONG><a name="[b7]"></a>UART0_Init</STRONG> (Thumb, 160 bytes, Stack size 0 bytes, texas.o(.text.UART0_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
+<P><STRONG><a name="[b8]"></a>UART0_Init</STRONG> (Thumb, 160 bytes, Stack size 0 bytes, texas.o(.text.UART0_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
 </UL>
 
-<P><STRONG><a name="[bc]"></a>Wave_Hit</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, wave.o(.text.Wave_Hit))
+<P><STRONG><a name="[bd]"></a>Wave_Hit</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, wave.o(.text.Wave_Hit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Wave_Hit &rArr; Wave_Start
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Start
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Start
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menuSelectOption
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menuSelectOption
 </UL>
 
-<P><STRONG><a name="[be]"></a>Wave_Hooray</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, wave.o(.text.Wave_Hooray))
+<P><STRONG><a name="[bf]"></a>Wave_Hooray</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, wave.o(.text.Wave_Hooray))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Wave_Hooray &rArr; Wave_Start
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Start
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Start
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[bf]"></a>Wave_Init</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, wave.o(.text.Wave_Init))
+<P><STRONG><a name="[c0]"></a>Wave_Init</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, wave.o(.text.Wave_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Wave_Init &rArr; Timer2A_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Stop
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer2A_Init
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_Init
+<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Stop
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer2A_Init
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[bd]"></a>Wave_Start</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, wave.o(.text.Wave_Start))
+<P><STRONG><a name="[be]"></a>Wave_Start</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, wave.o(.text.Wave_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Wave_Start
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Hit
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Hooray
+<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Hit
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Hooray
 </UL>
 
-<P><STRONG><a name="[c1]"></a>Wave_Stop</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, wave.o(.text.Wave_Stop))
-<BR><BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Init
+<P><STRONG><a name="[c2]"></a>Wave_Stop</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, wave.o(.text.Wave_Stop))
+<BR><BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Init
 </UL>
 
-<P><STRONG><a name="[c3]"></a>difficultySelectScreen</STRONG> (Thumb, 116 bytes, Stack size 16 bytes, osumain.o(.text.difficultySelectScreen))
+<P><STRONG><a name="[c4]"></a>difficultySelectScreen</STRONG> (Thumb, 116 bytes, Stack size 16 bytes, osumain.o(.text.difficultySelectScreen))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192 + Unknown Stack Size
 <LI>Call Chain = difficultySelectScreen &rArr; ST7735_OutString &rArr; ST7735_OutChar &rArr; ST7735_DrawString &rArr; ST7735_DrawCharS &rArr; ST7735_FillRect &rArr; setAddrWindow &rArr; writedata
 </UL>
@@ -1218,31 +1231,34 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c4]"></a>drawSquare</STRONG> (Thumb, 36 bytes, Stack size 24 bytes, osumain.o(.text.drawSquare))
+<P><STRONG><a name="[c5]"></a>drawSquare</STRONG> (Thumb, 36 bytes, Stack size 24 bytes, osumain.o(.text.drawSquare))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96 + Unknown Stack Size
 <LI>Call Chain = drawSquare &rArr; ST7735_DrawBitmap &rArr; setAddrWindow &rArr; writedata
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
 </UL>
 
-<P><STRONG><a name="[c5]"></a>drawSquaresInCircle</STRONG> (Thumb, 1238 bytes, Stack size 184 bytes, osumain.o(.text.drawSquaresInCircle))
-<BR><BR>[Stack]<UL><LI>Max Depth = 376 + Unknown Stack Size
+<P><STRONG><a name="[c6]"></a>drawSquaresInCircle</STRONG> (Thumb, 1550 bytes, Stack size 264 bytes, osumain.o(.text.drawSquaresInCircle))
+<BR><BR>[Stack]<UL><LI>Max Depth = 456 + Unknown Stack Size
 <LI>Call Chain = drawSquaresInCircle &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillRect
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquare
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquare
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_TransparentDrawBitmap
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Hit
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_OutString
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hover
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Random
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_SetCursor
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillScreen
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1260,10 +1276,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ce]"></a>hover</STRONG> (Thumb, 182 bytes, Stack size 100 bytes, osumain.o(.text.hover))
-<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = hover
+<P><STRONG><a name="[ce]"></a>hover</STRONG> (Thumb, 218 bytes, Stack size 132 bytes, osumain.o(.text.hover))
+<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = hover
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menuSelectOption
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1278,44 +1294,44 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8d]"></a>main</STRONG> (Thumb, 822 bytes, Stack size 72 bytes, osumain.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 448 + Unknown Stack Size
+<P><STRONG><a name="[8d]"></a>main</STRONG> (Thumb, 848 bytes, Stack size 112 bytes, osumain.o(.text.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 568 + Unknown Stack Size
 <LI>Call Chain = main &rArr; drawSquaresInCircle &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hover
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;endScreen
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_SetCursor
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Song_Init
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Song_Init
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillScreen
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Hooray
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;difficultySelectScreen
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Hooray
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;difficultySelectScreen
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;languageSelectScreen
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menuSelectOption
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startScreen
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JoyStick_Init
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EdgeTrigger_Init
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Init
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Init
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Init
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Init
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Output_Init
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PortD_Init
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay100ms
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PortD_Init
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
 <LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_Init
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Random_Init
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableInterrupts
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableInterrupts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[d8]"></a>menuSelectOption</STRONG> (Thumb, 510 bytes, Stack size 56 bytes, osumain.o(.text.menuSelectOption))
-<BR><BR>[Stack]<UL><LI>Max Depth = 156 + Unknown Stack Size
+<P><STRONG><a name="[d8]"></a>menuSelectOption</STRONG> (Thumb, 586 bytes, Stack size 112 bytes, osumain.o(.text.menuSelectOption))
+<BR><BR>[Stack]<UL><LI>Max Depth = 244 + Unknown Stack Size
 <LI>Call Chain = menuSelectOption &rArr; hover
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Hit
+<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wave_Hit
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hover
 </UL>
@@ -1356,6 +1372,7 @@ Global Symbols
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setAddrWindow
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commandList
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillRect
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_TransparentDrawBitmap
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap
 </UL>
 
@@ -1367,16 +1384,16 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = __ieee754_rem_pio2 &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
+<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
 </UL>
 
 <P><STRONG><a name="[e1]"></a>__kernel_cos</STRONG> (Thumb, 230 bytes, Stack size 48 bytes, cos_i.o(i.__kernel_cos))
@@ -1384,20 +1401,20 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
+<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
 </UL>
 
 <P><STRONG><a name="[e2]"></a>__kernel_poly</STRONG> (Thumb, 170 bytes, Stack size 24 bytes, poly.o(i.__kernel_poly))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = __kernel_poly &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
@@ -1410,29 +1427,29 @@ Global Symbols
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
+<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
 </UL>
 
 <P><STRONG><a name="[e6]"></a>__mathlib_dbl_infnan</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_infnan))
 <BR><BR>[Calls]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
+<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
 </UL>
 
 <P><STRONG><a name="[e7]"></a>__mathlib_dbl_invalid</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_invalid))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __mathlib_dbl_invalid &rArr; __aeabi_ddiv
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
+<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cos
 </UL>
 
 <P><STRONG><a name="[e5]"></a>__mathlib_dbl_underflow</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_underflow))
@@ -1441,7 +1458,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
 </UL>
 
-<P><STRONG><a name="[ca]"></a>cos</STRONG> (Thumb, 148 bytes, Stack size 32 bytes, cos.o(i.cos))
+<P><STRONG><a name="[cb]"></a>cos</STRONG> (Thumb, 148 bytes, Stack size 32 bytes, cos.o(i.cos))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = cos &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
@@ -1451,10 +1468,10 @@ Global Symbols
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
 </UL>
 
-<P><STRONG><a name="[cc]"></a>sin</STRONG> (Thumb, 150 bytes, Stack size 32 bytes, sin.o(i.sin))
+<P><STRONG><a name="[cd]"></a>sin</STRONG> (Thumb, 150 bytes, Stack size 32 bytes, sin.o(i.sin))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
@@ -1464,16 +1481,16 @@ Global Symbols
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
 </UL>
 
-<P><STRONG><a name="[c6]"></a>__aeabi_dadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd))
+<P><STRONG><a name="[c7]"></a>__aeabi_dadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
 </UL>
 
 <P><STRONG><a name="[e8]"></a>_dadd</STRONG> (Thumb, 332 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd), UNUSED)
@@ -1488,11 +1505,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 </UL>
 
-<P><STRONG><a name="[c8]"></a>__aeabi_ddiv</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv))
+<P><STRONG><a name="[c9]"></a>__aeabi_ddiv</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_ddiv
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
 </UL>
 
 <P><STRONG><a name="[ee]"></a>_ddiv</STRONG> (Thumb, 556 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv), UNUSED)
@@ -1500,39 +1517,39 @@ Global Symbols
 <LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
-<P><STRONG><a name="[cb]"></a>__aeabi_d2iz</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix))
+<P><STRONG><a name="[cc]"></a>__aeabi_d2iz</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_d2iz
 </UL>
 <BR>[Called By]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
 </UL>
 
 <P><STRONG><a name="[ef]"></a>_dfix</STRONG> (Thumb, 94 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
-<P><STRONG><a name="[c7]"></a>__aeabi_i2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt))
+<P><STRONG><a name="[c8]"></a>__aeabi_i2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt))
 <BR><BR>[Called By]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
 </UL>
 
-<P><STRONG><a name="[128]"></a>_dflt</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt), UNUSED)
+<P><STRONG><a name="[129]"></a>_dflt</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt), UNUSED)
 
 <P><STRONG><a name="[df]"></a>__aeabi_ui2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dfltu))
 <BR><BR>[Called By]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
 </UL>
 
-<P><STRONG><a name="[129]"></a>_dfltu</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dfltu), UNUSED)
+<P><STRONG><a name="[12a]"></a>_dfltu</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dfltu), UNUSED)
 
-<P><STRONG><a name="[c9]"></a>__aeabi_dmul</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul))
+<P><STRONG><a name="[ca]"></a>__aeabi_dmul</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_dmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawSquaresInCircle
 </UL>
 
 <P><STRONG><a name="[f0]"></a>_dmul</STRONG> (Thumb, 332 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul), UNUSED)
@@ -1607,7 +1624,7 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 80 + Unknown Stack Size
 <LI>Call Chain = commonInit &rArr; commandList &rArr; writedata
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay1ms
+<BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay1ms
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commandList
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
@@ -1617,7 +1634,7 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 32 + Unknown Stack Size
 <LI>Call Chain = commandList &rArr; writedata
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay1ms
+<BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay1ms
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writedata
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writecommand
 </UL>
@@ -1634,6 +1651,7 @@ Local Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawPixel
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillRect
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_TransparentDrawBitmap
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap
 </UL>
 

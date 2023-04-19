@@ -61,10 +61,10 @@ typedef enum {
 } arrow_t;
 
 typedef struct {
-	int32_t x;
-	int32_t y;
-	uint32_t width;
-	uint32_t height;
+	int32_t x, y;
+	int32_t prevX, prevY;
+	
+	uint32_t width, height;
 	arrow_t direction;
 	bool status; // if can hit or not hit
 } sprite_t;
@@ -147,6 +147,14 @@ void Timer1A_Handler(void){
 
 
 
+void GPIO_PortD_Init(void){
+	volatile uint32_t delay;
+	SYSCTL_RCGCGPIO_R |= 0x0F;
+	delay = SYSCTL_RCGCGPIO_R;
+	GPIO_PORTD_DEN_R |= 0x43;
+	GPIO_PORTD_DIR_R |= 0x43;
+}
+
 void Delay100ms(uint32_t count){
 	uint32_t volatile time;
   while(count>0){
@@ -157,15 +165,6 @@ void Delay100ms(uint32_t count){
     count--;
   }
 }
-
-void GPIO_PortD_Init(void){
-	volatile uint32_t delay;
-	SYSCTL_RCGCGPIO_R |= 0x0F;
-	delay = SYSCTL_RCGCGPIO_R;
-	GPIO_PORTD_DEN_R |= 0x43;
-	GPIO_PORTD_DIR_R |= 0x43;
-}
-
 
 
 
@@ -224,7 +223,7 @@ int main(void){
 		
 		else if (option == GAME){
 			Wave_Hooray();
-			Delay100ms(20);
+			Delay100ms(15);
 			option = -1;
 			ST7735_FillScreen(0x0000);
 			Song_Init();
@@ -348,60 +347,74 @@ void drawSquare(int x, int y, const unsigned short *src) {
 }
 
 sprite_t hitSquare;
+arrow_t arrDirection[] = {UP, RIGHT, DOWN, LEFT, RIGHT, UP, LEFT, LEFT, UP, DOWN, RIGHT, DOWN, LEFT, UP, UP, RIGHT, DOWN, DOWN, LEFT, RIGHT, UP, DOWN, RIGHT, LEFT, UP, UP, RIGHT, DOWN, LEFT, LEFT, UP, RIGHT, DOWN, UP, LEFT, RIGHT, UP, DOWN, LEFT, RIGHT, DOWN, UP, UP};
 void drawSquaresInCircle(int centerX, int centerY, int radius, int numSquares) {
     // Calculate the angular increment between each square
     double angleIncrement = 2*pi/numSquares;
-	
 		int i = 0;
+	
 		while(i < numSquares){
-			ST7735_DrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height );
+			ST7735_TransparentDrawBitmap( mouse.x, mouse.y, cursor, mouse.width, mouse.height, arrDirection[i-1]);
 			
 			if(hitCircleFlag == 2){
-				
 				double angle = i * angleIncrement;
         int x = centerX + (int)(radius * cos(angle));
         int y = centerY + (int)(radius * sin(angle));
 				
-				int rand = Random() % 4; //0,1,2,3
-				switch(rand){
+				int arrow = arrDirection[i];
+				ST7735_FillScreen(0x0000);
+				ST7735_SetCursor(0,0);
+				ST7735_OutString("Next: ");
+				switch(arrDirection[i+1]){
+					case 0: ST7735_OutString("UP "); break;
+					case 1: ST7735_OutString("DOWN "); break;
+					case 2: ST7735_OutString("LEFT "); break;
+					case 3: ST7735_OutString("RIGHT "); break;
+				}
+				
+				switch(arrow){
 					case 0:
 						drawSquare(x, y, mUP);
 						hitSquare.x = x; hitSquare.y = y; hitSquare.height = hitSquare.width = 40; hitSquare.direction = UP; hitSquare.status = True;
-						if(hover(mouse, hitSquare) && hitSquare.status){
+						if(hover(mouse, hitSquare) && hitSquare.status && dirPressed==UP){
 							ST7735_FillRect(x, y-hitSquare.height, 40, 41, ST7735_BLACK);
 							score++;
 							dirPressed = -1;
 							hitSquare.status = False;
+							Wave_Hit();
 						}
 						break;
 					case 1:
 						drawSquare(x, y, mDOWN);
 						hitSquare.x = x; hitSquare.y = y; hitSquare.height = hitSquare.width = 40; hitSquare.direction = DOWN; hitSquare.status = True;
-						if(hover(mouse, hitSquare) && hitSquare.status){
+						if(hover(mouse, hitSquare) && hitSquare.status && dirPressed==DOWN){
 							ST7735_FillRect(x, y-hitSquare.height, 40, 41, ST7735_BLACK);
 							score++;
 							dirPressed = -1;
 							hitSquare.status = False;
+							Wave_Hit();
 						}
 						break;
 					case 2:
 						drawSquare(x, y, mLEFT);
 						hitSquare.x = x; hitSquare.y = y; hitSquare.height = hitSquare.width = 40; hitSquare.direction = LEFT; hitSquare.status = True;
-						if(hover(mouse, hitSquare) && hitSquare.status){
+						if(hover(mouse, hitSquare) && hitSquare.status && dirPressed==LEFT){
 							ST7735_FillRect(x, y-hitSquare.height, 40, 41, ST7735_BLACK);
 							score++;
 							dirPressed = -1;
 							hitSquare.status = False;
+							Wave_Hit();
 						}
 						break;
 					case 3:
 						drawSquare(x, y, mRIGHT);
 						hitSquare.x = x; hitSquare.y = y; hitSquare.height = hitSquare.width = 40; hitSquare.direction = RIGHT; hitSquare.status = True;
-						if(hover(mouse, hitSquare) && hitSquare.status){
+						if(hover(mouse, hitSquare) && hitSquare.status && dirPressed==RIGHT){
 							ST7735_FillRect(x, y-hitSquare.height, 40, 41, ST7735_BLACK);
 							score++;
 							dirPressed = -1;
 							hitSquare.status = False;
+							Wave_Hit();
 						}
 						break;
 				}

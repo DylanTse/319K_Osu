@@ -64,8 +64,8 @@ Section Cross References
     osumain.o(.text.Timer1A_Handler) refers to abs.o(.text) for abs
     osumain.o(.text.Timer1A_Handler) refers to osumain.o(.bss.mouse) for mouse
     osumain.o(.ARM.exidx.text.Timer1A_Handler) refers to osumain.o(.text.Timer1A_Handler) for [Anonymous Symbol]
-    osumain.o(.ARM.exidx.text.Delay100ms) refers to osumain.o(.text.Delay100ms) for [Anonymous Symbol]
     osumain.o(.ARM.exidx.text.GPIO_PortD_Init) refers to osumain.o(.text.GPIO_PortD_Init) for [Anonymous Symbol]
+    osumain.o(.ARM.exidx.text.Delay100ms) refers to osumain.o(.text.Delay100ms) for [Anonymous Symbol]
     osumain.o(.text.main) refers to startup.o(.text) for DisableInterrupts
     osumain.o(.text.main) refers to texas.o(.text.TExaS_Init) for TExaS_Init
     osumain.o(.text.main) refers to st7735.o(.text.Output_Init) for Output_Init
@@ -142,21 +142,26 @@ Section Cross References
     osumain.o(.text.drawSquaresInCircle) refers to dflt_clz.o(x$fpl$dflt) for __aeabi_i2d
     osumain.o(.text.drawSquaresInCircle) refers to ddiv.o(x$fpl$ddiv) for __aeabi_ddiv
     osumain.o(.text.drawSquaresInCircle) refers to osumain.o(.bss.mouse) for mouse
+    osumain.o(.text.drawSquaresInCircle) refers to osumain.o(.data.arrDirection) for arrDirection
     osumain.o(.text.drawSquaresInCircle) refers to osumain.o(.rodata.cursor) for cursor
-    osumain.o(.text.drawSquaresInCircle) refers to st7735.o(.text.ST7735_DrawBitmap) for ST7735_DrawBitmap
+    osumain.o(.text.drawSquaresInCircle) refers to st7735.o(.text.ST7735_TransparentDrawBitmap) for ST7735_TransparentDrawBitmap
     osumain.o(.text.drawSquaresInCircle) refers to song.o(.bss.hitCircleFlag) for hitCircleFlag
     osumain.o(.text.drawSquaresInCircle) refers to dmul.o(x$fpl$dmul) for __aeabi_dmul
     osumain.o(.text.drawSquaresInCircle) refers to cos.o(i.cos) for cos
     osumain.o(.text.drawSquaresInCircle) refers to dfix.o(x$fpl$dfix) for __aeabi_d2iz
     osumain.o(.text.drawSquaresInCircle) refers to sin.o(i.sin) for sin
-    osumain.o(.text.drawSquaresInCircle) refers to random.o(.text) for Random
+    osumain.o(.text.drawSquaresInCircle) refers to st7735.o(.text.ST7735_FillScreen) for ST7735_FillScreen
+    osumain.o(.text.drawSquaresInCircle) refers to st7735.o(.text.ST7735_SetCursor) for ST7735_SetCursor
+    osumain.o(.text.drawSquaresInCircle) refers to osumain.o(.rodata.str1.1) for .L.str.16
+    osumain.o(.text.drawSquaresInCircle) refers to st7735.o(.text.ST7735_OutString) for ST7735_OutString
     osumain.o(.text.drawSquaresInCircle) refers to osumain.o(.rodata.mUP) for mUP
     osumain.o(.text.drawSquaresInCircle) refers to osumain.o(.text.drawSquare) for drawSquare
     osumain.o(.text.drawSquaresInCircle) refers to osumain.o(.bss.hitSquare) for hitSquare
     osumain.o(.text.drawSquaresInCircle) refers to osumain.o(.text.hover) for hover
+    osumain.o(.text.drawSquaresInCircle) refers to osumain.o(.data.dirPressed) for dirPressed
     osumain.o(.text.drawSquaresInCircle) refers to st7735.o(.text.ST7735_FillRect) for ST7735_FillRect
     osumain.o(.text.drawSquaresInCircle) refers to osumain.o(.bss.score) for score
-    osumain.o(.text.drawSquaresInCircle) refers to osumain.o(.data.dirPressed) for dirPressed
+    osumain.o(.text.drawSquaresInCircle) refers to wave.o(.text.Wave_Hit) for Wave_Hit
     osumain.o(.text.drawSquaresInCircle) refers to osumain.o(.rodata.mDOWN) for mDOWN
     osumain.o(.text.drawSquaresInCircle) refers to osumain.o(.rodata.mLEFT) for mLEFT
     osumain.o(.text.drawSquaresInCircle) refers to osumain.o(.rodata.mRIGHT) for mRIGHT
@@ -695,8 +700,8 @@ Removing Unused input sections from the image.
     Removing osumain.o(.ARM.exidx.text.GPIOPortE_Handler), (8 bytes).
     Removing osumain.o(.ARM.exidx.text.GPIOPortC_Handler), (8 bytes).
     Removing osumain.o(.ARM.exidx.text.Timer1A_Handler), (8 bytes).
-    Removing osumain.o(.ARM.exidx.text.Delay100ms), (8 bytes).
     Removing osumain.o(.ARM.exidx.text.GPIO_PortD_Init), (8 bytes).
+    Removing osumain.o(.ARM.exidx.text.Delay100ms), (8 bytes).
     Removing osumain.o(.ARM.exidx.text.main), (8 bytes).
     Removing osumain.o(.ARM.exidx.text.startScreen), (8 bytes).
     Removing osumain.o(.ARM.exidx.text.menuSelectOption), (8 bytes).
@@ -750,7 +755,6 @@ Removing Unused input sections from the image.
     Removing st7735.o(.ARM.exidx.text.ST7735_SwapColor), (8 bytes).
     Removing st7735.o(.text.backgroundPixel), (34 bytes).
     Removing st7735.o(.ARM.exidx.text.backgroundPixel), (8 bytes).
-    Removing st7735.o(.text.ST7735_TransparentDrawBitmap), (674 bytes).
     Removing st7735.o(.ARM.exidx.text.ST7735_TransparentDrawBitmap), (8 bytes).
     Removing st7735.o(.ARM.exidx.text.ST7735_DrawBitmap), (8 bytes).
     Removing st7735.o(.ARM.exidx.text.ST7735_DrawCharS), (8 bytes).
@@ -852,7 +856,7 @@ Removing Unused input sections from the image.
     Removing timer3a.o(.text.Timer3A_Stop), (26 bytes).
     Removing timer3a.o(.ARM.exidx.text.Timer3A_Stop), (8 bytes).
 
-191 unused section(s) (total 12888 bytes) removed from the image.
+190 unused section(s) (total 12214 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1050,121 +1054,127 @@ Image Symbol Table
     [Anonymous Symbol]                       0x000015c4   Section        0  st7735.o(.text.ST7735_OutUDec)
     [Anonymous Symbol]                       0x0000167c   Section        0  st7735.o(.text.ST7735_SetCursor)
     [Anonymous Symbol]                       0x000016b4   Section        0  st7735.o(.text.ST7735_SwapColor)
-    [Anonymous Symbol]                       0x000016d0   Section        0  texas.o(.text.Scope)
-    [Anonymous Symbol]                       0x000016e8   Section        0  song.o(.text.Song_Init)
-    [Anonymous Symbol]                       0x0000171c   Section        0  song.o(.text.Song_Play)
-    [Anonymous Symbol]                       0x0000176c   Section        0  sound.o(.text.Sound_Init)
-    [Anonymous Symbol]                       0x00001798   Section        0  sound.o(.text.Sound_Start)
-    [Anonymous Symbol]                       0x000017b4   Section        0  sound.o(.text.SysTick_Handler)
-    [Anonymous Symbol]                       0x000017dc   Section        0  texas.o(.text.TExaS_Init)
-    [Anonymous Symbol]                       0x00001944   Section        0  osumain.o(.text.Timer1A_Handler)
-    [Anonymous Symbol]                       0x00001ab4   Section        0  timer1.o(.text.Timer1_Init)
-    [Anonymous Symbol]                       0x00001b4c   Section        0  wave.o(.text.Timer2A_Handler)
-    [Anonymous Symbol]                       0x00001bac   Section        0  wave.o(.text.Timer2A_Init)
-    [Anonymous Symbol]                       0x00001c34   Section        0  timer3a.o(.text.Timer3A_Handler)
-    [Anonymous Symbol]                       0x00001c50   Section        0  timer3a.o(.text.Timer3A_Init)
-    [Anonymous Symbol]                       0x00001cf0   Section        0  texas.o(.text.Timer5A_Handler)
-    [Anonymous Symbol]                       0x00001d0c   Section        0  texas.o(.text.UART0_Init)
-    [Anonymous Symbol]                       0x00001dac   Section        0  wave.o(.text.Wave_Hit)
-    [Anonymous Symbol]                       0x00001dc0   Section        0  wave.o(.text.Wave_Hooray)
-    [Anonymous Symbol]                       0x00001dd4   Section        0  wave.o(.text.Wave_Init)
-    [Anonymous Symbol]                       0x00001df4   Section        0  wave.o(.text.Wave_Start)
-    [Anonymous Symbol]                       0x00001e24   Section        0  wave.o(.text.Wave_Stop)
-    commandList                              0x00001e35   Thumb Code   170  st7735.o(.text.commandList)
-    [Anonymous Symbol]                       0x00001e34   Section        0  st7735.o(.text.commandList)
-    commonInit                               0x00001ee1   Thumb Code   418  st7735.o(.text.commonInit)
-    [Anonymous Symbol]                       0x00001ee0   Section        0  st7735.o(.text.commonInit)
-    [Anonymous Symbol]                       0x00002084   Section        0  osumain.o(.text.difficultySelectScreen)
-    [Anonymous Symbol]                       0x000020f8   Section        0  osumain.o(.text.drawSquare)
-    [Anonymous Symbol]                       0x0000211c   Section        0  osumain.o(.text.drawSquaresInCircle)
-    [Anonymous Symbol]                       0x000025f4   Section        0  osumain.o(.text.endScreen)
-    [Anonymous Symbol]                       0x00002670   Section        0  osumain.o(.text.hover)
-    [Anonymous Symbol]                       0x00002728   Section        0  osumain.o(.text.languageSelectScreen)
-    [Anonymous Symbol]                       0x0000276c   Section        0  osumain.o(.text.main)
-    [Anonymous Symbol]                       0x00002aa4   Section        0  osumain.o(.text.menuSelectOption)
-    pushColor                                0x00002ca5   Thumb Code    28  st7735.o(.text.pushColor)
-    [Anonymous Symbol]                       0x00002ca4   Section        0  st7735.o(.text.pushColor)
-    setAddrWindow                            0x00002cc1   Thumb Code   148  st7735.o(.text.setAddrWindow)
-    [Anonymous Symbol]                       0x00002cc0   Section        0  st7735.o(.text.setAddrWindow)
-    [Anonymous Symbol]                       0x00002d54   Section        0  osumain.o(.text.startScreen)
-    [Anonymous Symbol]                       0x00002e0c   Section        0  st7735.o(.text.writecommand)
-    [Anonymous Symbol]                       0x00002e38   Section        0  st7735.o(.text.writedata)
-    i.__ARM_fpclassify                       0x00002e64   Section        0  fpclassify.o(i.__ARM_fpclassify)
-    i.__ieee754_rem_pio2                     0x00002e8c   Section        0  rred.o(i.__ieee754_rem_pio2)
-    i.__kernel_cos                           0x00003214   Section        0  cos_i.o(i.__kernel_cos)
-    i.__kernel_poly                          0x00003310   Section        0  poly.o(i.__kernel_poly)
-    i.__kernel_sin                           0x000033bc   Section        0  sin_i.o(i.__kernel_sin)
-    i.__mathlib_dbl_infnan                   0x000034a8   Section        0  dunder.o(i.__mathlib_dbl_infnan)
-    i.__mathlib_dbl_invalid                  0x000034ae   Section        0  dunder.o(i.__mathlib_dbl_invalid)
-    i.__mathlib_dbl_underflow                0x000034bc   Section        0  dunder.o(i.__mathlib_dbl_underflow)
-    i.cos                                    0x000034cc   Section        0  cos.o(i.cos)
-    i.sin                                    0x00003568   Section        0  sin.o(i.sin)
-    x$fpl$dadd                               0x00003608   Section      336  daddsub_clz.o(x$fpl$dadd)
-    _dadd1                                   0x00003619   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
-    x$fpl$dcheck1                            0x00003758   Section       16  dcheck1.o(x$fpl$dcheck1)
-    x$fpl$ddiv                               0x00003768   Section      692  ddiv.o(x$fpl$ddiv)
-    ddiv_entry                               0x0000376f   Thumb Code     0  ddiv.o(x$fpl$ddiv)
-    x$fpl$dfix                               0x00003a1c   Section       94  dfix.o(x$fpl$dfix)
-    x$fpl$dflt                               0x00003a7a   Section       46  dflt_clz.o(x$fpl$dflt)
-    x$fpl$dfltu                              0x00003aa8   Section       38  dflt_clz.o(x$fpl$dfltu)
-    x$fpl$dmul                               0x00003ad0   Section      340  dmul.o(x$fpl$dmul)
-    x$fpl$dnaninf                            0x00003c24   Section      156  dnaninf.o(x$fpl$dnaninf)
-    x$fpl$dretinf                            0x00003cc0   Section       12  dretinf.o(x$fpl$dretinf)
-    x$fpl$drsb                               0x00003ccc   Section       22  daddsub_clz.o(x$fpl$drsb)
-    x$fpl$dsub                               0x00003ce4   Section      476  daddsub_clz.o(x$fpl$dsub)
-    _dsub1                                   0x00003cf5   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
-    x$fpl$retnan                             0x00003ec0   Section      100  retnan.o(x$fpl$retnan)
-    x$fpl$scalbn                             0x00003f24   Section       92  scalbn.o(x$fpl$scalbn)
-    x$fpl$trapveneer                         0x00003f80   Section       48  trapv.o(x$fpl$trapveneer)
-    C                                        0x00003fb0   Data          48  cos_i.o(.constdata)
-    .constdata                               0x00003fb0   Section       48  cos_i.o(.constdata)
-    x$fpl$usenofp                            0x00003fb0   Section        0  usenofp.o(x$fpl$usenofp)
-    pio2s                                    0x00003fe0   Data          48  rred.o(.constdata)
-    .constdata                               0x00003fe0   Section      204  rred.o(.constdata)
-    twooverpi                                0x00004010   Data         156  rred.o(.constdata)
-    S                                        0x000040b0   Data          40  sin_i.o(.constdata)
-    .constdata                               0x000040b0   Section       40  sin_i.o(.constdata)
-    Font                                     0x000069cc   Data        1275  st7735.o(.rodata.Font)
-    [Anonymous Symbol]                       0x000069cc   Section        0  st7735.o(.rodata.Font)
-    Rcmd1                                    0x0000832c   Data          59  st7735.o(.rodata.Rcmd1)
-    [Anonymous Symbol]                       0x0000832c   Section        0  st7735.o(.rodata.Rcmd1)
-    Rcmd2green                               0x00008367   Data          13  st7735.o(.rodata.Rcmd2green)
-    [Anonymous Symbol]                       0x00008367   Section        0  st7735.o(.rodata.Rcmd2green)
-    Rcmd2red                                 0x00008374   Data          13  st7735.o(.rodata.Rcmd2red)
-    [Anonymous Symbol]                       0x00008374   Section        0  st7735.o(.rodata.Rcmd2red)
-    Rcmd3                                    0x00008381   Data          43  st7735.o(.rodata.Rcmd3)
-    [Anonymous Symbol]                       0x00008381   Section        0  st7735.o(.rodata.Rcmd3)
-    .L.str                                   0x0001531e   Data           7  osumain.o(.rodata.str1.1)
-    .L.str.5                                 0x0001531e   Data          12  osumain.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x0001531e   Section        0  osumain.o(.rodata.str1.1)
-    .L.str.1                                 0x0001532a   Data          13  osumain.o(.rodata.str1.1)
-    .L.str.9                                 0x00015337   Data          13  osumain.o(.rodata.str1.1)
-    .L.str.11                                0x00015344   Data          14  osumain.o(.rodata.str1.1)
-    .L.str.13                                0x00015352   Data          19  osumain.o(.rodata.str1.1)
-    .L.str.10                                0x00015365   Data          14  osumain.o(.rodata.str1.1)
-    .L.str.12                                0x00015373   Data          17  osumain.o(.rodata.str1.1)
-    .L.str.8                                 0x00015384   Data          15  osumain.o(.rodata.str1.1)
-    .L.str                                   0x00015393   Data          22  st7735.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x00015393   Section        0  st7735.o(.rodata.str1.1)
-    .L.str.14                                0x000153b9   Data          14  osumain.o(.rodata.str1.1)
-    .L.str.15                                0x000153c7   Data          10  osumain.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x000016d0   Section        0  st7735.o(.text.ST7735_TransparentDrawBitmap)
+    [Anonymous Symbol]                       0x00001994   Section        0  texas.o(.text.Scope)
+    [Anonymous Symbol]                       0x000019ac   Section        0  song.o(.text.Song_Init)
+    [Anonymous Symbol]                       0x000019e0   Section        0  song.o(.text.Song_Play)
+    [Anonymous Symbol]                       0x00001a30   Section        0  sound.o(.text.Sound_Init)
+    [Anonymous Symbol]                       0x00001a5c   Section        0  sound.o(.text.Sound_Start)
+    [Anonymous Symbol]                       0x00001a78   Section        0  sound.o(.text.SysTick_Handler)
+    [Anonymous Symbol]                       0x00001aa0   Section        0  texas.o(.text.TExaS_Init)
+    [Anonymous Symbol]                       0x00001c08   Section        0  osumain.o(.text.Timer1A_Handler)
+    [Anonymous Symbol]                       0x00001d78   Section        0  timer1.o(.text.Timer1_Init)
+    [Anonymous Symbol]                       0x00001e10   Section        0  wave.o(.text.Timer2A_Handler)
+    [Anonymous Symbol]                       0x00001e70   Section        0  wave.o(.text.Timer2A_Init)
+    [Anonymous Symbol]                       0x00001ef8   Section        0  timer3a.o(.text.Timer3A_Handler)
+    [Anonymous Symbol]                       0x00001f14   Section        0  timer3a.o(.text.Timer3A_Init)
+    [Anonymous Symbol]                       0x00001fb4   Section        0  texas.o(.text.Timer5A_Handler)
+    [Anonymous Symbol]                       0x00001fd0   Section        0  texas.o(.text.UART0_Init)
+    [Anonymous Symbol]                       0x00002070   Section        0  wave.o(.text.Wave_Hit)
+    [Anonymous Symbol]                       0x00002084   Section        0  wave.o(.text.Wave_Hooray)
+    [Anonymous Symbol]                       0x00002098   Section        0  wave.o(.text.Wave_Init)
+    [Anonymous Symbol]                       0x000020b8   Section        0  wave.o(.text.Wave_Start)
+    [Anonymous Symbol]                       0x000020e8   Section        0  wave.o(.text.Wave_Stop)
+    commandList                              0x000020f9   Thumb Code   170  st7735.o(.text.commandList)
+    [Anonymous Symbol]                       0x000020f8   Section        0  st7735.o(.text.commandList)
+    commonInit                               0x000021a5   Thumb Code   418  st7735.o(.text.commonInit)
+    [Anonymous Symbol]                       0x000021a4   Section        0  st7735.o(.text.commonInit)
+    [Anonymous Symbol]                       0x00002348   Section        0  osumain.o(.text.difficultySelectScreen)
+    [Anonymous Symbol]                       0x000023bc   Section        0  osumain.o(.text.drawSquare)
+    [Anonymous Symbol]                       0x000023e0   Section        0  osumain.o(.text.drawSquaresInCircle)
+    [Anonymous Symbol]                       0x000029f0   Section        0  osumain.o(.text.endScreen)
+    [Anonymous Symbol]                       0x00002a6c   Section        0  osumain.o(.text.hover)
+    [Anonymous Symbol]                       0x00002b48   Section        0  osumain.o(.text.languageSelectScreen)
+    [Anonymous Symbol]                       0x00002b8c   Section        0  osumain.o(.text.main)
+    [Anonymous Symbol]                       0x00002edc   Section        0  osumain.o(.text.menuSelectOption)
+    pushColor                                0x00003129   Thumb Code    28  st7735.o(.text.pushColor)
+    [Anonymous Symbol]                       0x00003128   Section        0  st7735.o(.text.pushColor)
+    setAddrWindow                            0x00003145   Thumb Code   148  st7735.o(.text.setAddrWindow)
+    [Anonymous Symbol]                       0x00003144   Section        0  st7735.o(.text.setAddrWindow)
+    [Anonymous Symbol]                       0x000031d8   Section        0  osumain.o(.text.startScreen)
+    [Anonymous Symbol]                       0x00003290   Section        0  st7735.o(.text.writecommand)
+    [Anonymous Symbol]                       0x000032bc   Section        0  st7735.o(.text.writedata)
+    i.__ARM_fpclassify                       0x000032e8   Section        0  fpclassify.o(i.__ARM_fpclassify)
+    i.__ieee754_rem_pio2                     0x00003310   Section        0  rred.o(i.__ieee754_rem_pio2)
+    i.__kernel_cos                           0x00003698   Section        0  cos_i.o(i.__kernel_cos)
+    i.__kernel_poly                          0x00003794   Section        0  poly.o(i.__kernel_poly)
+    i.__kernel_sin                           0x00003840   Section        0  sin_i.o(i.__kernel_sin)
+    i.__mathlib_dbl_infnan                   0x0000392c   Section        0  dunder.o(i.__mathlib_dbl_infnan)
+    i.__mathlib_dbl_invalid                  0x00003932   Section        0  dunder.o(i.__mathlib_dbl_invalid)
+    i.__mathlib_dbl_underflow                0x00003940   Section        0  dunder.o(i.__mathlib_dbl_underflow)
+    i.cos                                    0x00003950   Section        0  cos.o(i.cos)
+    i.sin                                    0x000039ec   Section        0  sin.o(i.sin)
+    x$fpl$dadd                               0x00003a8c   Section      336  daddsub_clz.o(x$fpl$dadd)
+    _dadd1                                   0x00003a9d   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    x$fpl$dcheck1                            0x00003bdc   Section       16  dcheck1.o(x$fpl$dcheck1)
+    x$fpl$ddiv                               0x00003bec   Section      692  ddiv.o(x$fpl$ddiv)
+    ddiv_entry                               0x00003bf3   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    x$fpl$dfix                               0x00003ea0   Section       94  dfix.o(x$fpl$dfix)
+    x$fpl$dflt                               0x00003efe   Section       46  dflt_clz.o(x$fpl$dflt)
+    x$fpl$dfltu                              0x00003f2c   Section       38  dflt_clz.o(x$fpl$dfltu)
+    x$fpl$dmul                               0x00003f54   Section      340  dmul.o(x$fpl$dmul)
+    x$fpl$dnaninf                            0x000040a8   Section      156  dnaninf.o(x$fpl$dnaninf)
+    x$fpl$dretinf                            0x00004144   Section       12  dretinf.o(x$fpl$dretinf)
+    x$fpl$drsb                               0x00004150   Section       22  daddsub_clz.o(x$fpl$drsb)
+    x$fpl$dsub                               0x00004168   Section      476  daddsub_clz.o(x$fpl$dsub)
+    _dsub1                                   0x00004179   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    x$fpl$retnan                             0x00004344   Section      100  retnan.o(x$fpl$retnan)
+    x$fpl$scalbn                             0x000043a8   Section       92  scalbn.o(x$fpl$scalbn)
+    x$fpl$trapveneer                         0x00004404   Section       48  trapv.o(x$fpl$trapveneer)
+    x$fpl$usenofp                            0x00004434   Section        0  usenofp.o(x$fpl$usenofp)
+    C                                        0x00004438   Data          48  cos_i.o(.constdata)
+    .constdata                               0x00004438   Section       48  cos_i.o(.constdata)
+    pio2s                                    0x00004468   Data          48  rred.o(.constdata)
+    .constdata                               0x00004468   Section      204  rred.o(.constdata)
+    twooverpi                                0x00004498   Data         156  rred.o(.constdata)
+    S                                        0x00004538   Data          40  sin_i.o(.constdata)
+    .constdata                               0x00004538   Section       40  sin_i.o(.constdata)
+    Font                                     0x00006e54   Data        1275  st7735.o(.rodata.Font)
+    [Anonymous Symbol]                       0x00006e54   Section        0  st7735.o(.rodata.Font)
+    Rcmd1                                    0x000087b4   Data          59  st7735.o(.rodata.Rcmd1)
+    [Anonymous Symbol]                       0x000087b4   Section        0  st7735.o(.rodata.Rcmd1)
+    Rcmd2green                               0x000087ef   Data          13  st7735.o(.rodata.Rcmd2green)
+    [Anonymous Symbol]                       0x000087ef   Section        0  st7735.o(.rodata.Rcmd2green)
+    Rcmd2red                                 0x000087fc   Data          13  st7735.o(.rodata.Rcmd2red)
+    [Anonymous Symbol]                       0x000087fc   Section        0  st7735.o(.rodata.Rcmd2red)
+    Rcmd3                                    0x00008809   Data          43  st7735.o(.rodata.Rcmd3)
+    [Anonymous Symbol]                       0x00008809   Section        0  st7735.o(.rodata.Rcmd3)
+    .L.str                                   0x000157a6   Data           7  osumain.o(.rodata.str1.1)
+    .L.str.5                                 0x000157a6   Data          12  osumain.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x000157a6   Section        0  osumain.o(.rodata.str1.1)
+    .L.str.1                                 0x000157b2   Data          13  osumain.o(.rodata.str1.1)
+    .L.str.16                                0x000157bf   Data           7  osumain.o(.rodata.str1.1)
+    .L.str.18                                0x000157c6   Data           6  osumain.o(.rodata.str1.1)
+    .L.str.17                                0x000157cc   Data           4  osumain.o(.rodata.str1.1)
+    .L.str.19                                0x000157d0   Data           6  osumain.o(.rodata.str1.1)
+    .L.str.20                                0x000157d6   Data           7  osumain.o(.rodata.str1.1)
+    .L.str.9                                 0x000157dd   Data          13  osumain.o(.rodata.str1.1)
+    .L.str.11                                0x000157ea   Data          14  osumain.o(.rodata.str1.1)
+    .L.str.13                                0x000157f8   Data          19  osumain.o(.rodata.str1.1)
+    .L.str.10                                0x0001580b   Data          14  osumain.o(.rodata.str1.1)
+    .L.str.12                                0x00015819   Data          17  osumain.o(.rodata.str1.1)
+    .L.str.8                                 0x0001582a   Data          15  osumain.o(.rodata.str1.1)
+    .L.str                                   0x00015839   Data          22  st7735.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x00015839   Section        0  st7735.o(.rodata.str1.1)
+    .L.str.14                                0x00015841   Data          14  osumain.o(.rodata.str1.1)
+    .L.str.15                                0x0001584f   Data          10  osumain.o(.rodata.str1.1)
     _height                                  0x20000002   Data           2  st7735.o(.data._height)
     [Anonymous Symbol]                       0x20000002   Section        0  st7735.o(.data._height)
     _width                                   0x20000004   Data           2  st7735.o(.data._width)
     [Anonymous Symbol]                       0x20000004   Section        0  st7735.o(.data._width)
-    M                                        0x20000010   Data           4  random.o(DATA)
-    DATA                                     0x20000010   Section        4  random.o(DATA)
-    .bss                                     0x20000018   Section       96  libspace.o(.bss)
-    ColStart                                 0x20000078   Data           1  st7735.o(.bss.ColStart)
-    [Anonymous Symbol]                       0x20000078   Section        0  st7735.o(.bss.ColStart)
-    RowStart                                 0x20000094   Data           1  st7735.o(.bss.RowStart)
-    [Anonymous Symbol]                       0x20000094   Section        0  st7735.o(.bss.RowStart)
-    TabColor                                 0x200000a4   Data           1  st7735.o(.bss.TabColor)
-    [Anonymous Symbol]                       0x200000a4   Section        0  st7735.o(.bss.TabColor)
-    HeapMem                                  0x20000140   Data           0  startup.o(HEAP)
-    StackMem                                 0x20000140   Data           0  startup.o(STACK)
-    HEAP                                     0x20000140   Section        0  startup.o(HEAP)
-    STACK                                    0x20000140   Section     1024  startup.o(STACK)
+    M                                        0x20000040   Data           4  random.o(DATA)
+    DATA                                     0x20000040   Section        4  random.o(DATA)
+    .bss                                     0x20000048   Section       96  libspace.o(.bss)
+    ColStart                                 0x200000a8   Data           1  st7735.o(.bss.ColStart)
+    [Anonymous Symbol]                       0x200000a8   Section        0  st7735.o(.bss.ColStart)
+    RowStart                                 0x200000c4   Data           1  st7735.o(.bss.RowStart)
+    [Anonymous Symbol]                       0x200000c4   Section        0  st7735.o(.bss.RowStart)
+    TabColor                                 0x200000d4   Data           1  st7735.o(.bss.TabColor)
+    [Anonymous Symbol]                       0x200000d4   Section        0  st7735.o(.bss.TabColor)
+    HeapMem                                  0x200001a0   Data           0  startup.o(HEAP)
+    StackMem                                 0x200001a0   Data           0  startup.o(STACK)
+    HEAP                                     0x200001a0   Section        0  startup.o(HEAP)
+    STACK                                    0x200001a0   Section     1024  startup.o(STACK)
 
     Global Symbols
 
@@ -1431,114 +1441,116 @@ Image Symbol Table
     ST7735_OutUDec                           0x000015c5   Thumb Code   184  st7735.o(.text.ST7735_OutUDec)
     ST7735_SetCursor                         0x0000167d   Thumb Code    54  st7735.o(.text.ST7735_SetCursor)
     ST7735_SwapColor                         0x000016b5   Thumb Code    28  st7735.o(.text.ST7735_SwapColor)
-    Scope                                    0x000016d1   Thumb Code    24  texas.o(.text.Scope)
-    Song_Init                                0x000016e9   Thumb Code    52  song.o(.text.Song_Init)
-    Song_Play                                0x0000171d   Thumb Code    80  song.o(.text.Song_Play)
-    Sound_Init                               0x0000176d   Thumb Code    44  sound.o(.text.Sound_Init)
-    Sound_Start                              0x00001799   Thumb Code    28  sound.o(.text.Sound_Start)
-    SysTick_Handler                          0x000017b5   Thumb Code    38  sound.o(.text.SysTick_Handler)
-    TExaS_Init                               0x000017dd   Thumb Code   360  texas.o(.text.TExaS_Init)
-    Timer1A_Handler                          0x00001945   Thumb Code   368  osumain.o(.text.Timer1A_Handler)
-    Timer1_Init                              0x00001ab5   Thumb Code   150  timer1.o(.text.Timer1_Init)
-    Timer2A_Handler                          0x00001b4d   Thumb Code    94  wave.o(.text.Timer2A_Handler)
-    Timer2A_Init                             0x00001bad   Thumb Code   136  wave.o(.text.Timer2A_Init)
-    Timer3A_Handler                          0x00001c35   Thumb Code    28  timer3a.o(.text.Timer3A_Handler)
-    Timer3A_Init                             0x00001c51   Thumb Code   158  timer3a.o(.text.Timer3A_Init)
-    Timer5A_Handler                          0x00001cf1   Thumb Code    28  texas.o(.text.Timer5A_Handler)
-    UART0_Init                               0x00001d0d   Thumb Code   160  texas.o(.text.UART0_Init)
-    Wave_Hit                                 0x00001dad   Thumb Code    20  wave.o(.text.Wave_Hit)
-    Wave_Hooray                              0x00001dc1   Thumb Code    20  wave.o(.text.Wave_Hooray)
-    Wave_Init                                0x00001dd5   Thumb Code    32  wave.o(.text.Wave_Init)
-    Wave_Start                               0x00001df5   Thumb Code    48  wave.o(.text.Wave_Start)
-    Wave_Stop                                0x00001e25   Thumb Code    16  wave.o(.text.Wave_Stop)
-    difficultySelectScreen                   0x00002085   Thumb Code   116  osumain.o(.text.difficultySelectScreen)
-    drawSquare                               0x000020f9   Thumb Code    36  osumain.o(.text.drawSquare)
-    drawSquaresInCircle                      0x0000211d   Thumb Code  1238  osumain.o(.text.drawSquaresInCircle)
-    endScreen                                0x000025f5   Thumb Code   124  osumain.o(.text.endScreen)
-    hover                                    0x00002671   Thumb Code   182  osumain.o(.text.hover)
-    languageSelectScreen                     0x00002729   Thumb Code    68  osumain.o(.text.languageSelectScreen)
-    main                                     0x0000276d   Thumb Code   822  osumain.o(.text.main)
-    menuSelectOption                         0x00002aa5   Thumb Code   510  osumain.o(.text.menuSelectOption)
-    startScreen                              0x00002d55   Thumb Code   182  osumain.o(.text.startScreen)
-    writecommand                             0x00002e0d   Thumb Code    44  st7735.o(.text.writecommand)
-    writedata                                0x00002e39   Thumb Code    44  st7735.o(.text.writedata)
-    __ARM_fpclassify                         0x00002e65   Thumb Code    40  fpclassify.o(i.__ARM_fpclassify)
-    __ieee754_rem_pio2                       0x00002e8d   Thumb Code   828  rred.o(i.__ieee754_rem_pio2)
-    __kernel_cos                             0x00003215   Thumb Code   230  cos_i.o(i.__kernel_cos)
-    __kernel_poly                            0x00003311   Thumb Code   170  poly.o(i.__kernel_poly)
-    __kernel_sin                             0x000033bd   Thumb Code   224  sin_i.o(i.__kernel_sin)
-    __mathlib_dbl_infnan                     0x000034a9   Thumb Code     6  dunder.o(i.__mathlib_dbl_infnan)
-    __mathlib_dbl_invalid                    0x000034af   Thumb Code    12  dunder.o(i.__mathlib_dbl_invalid)
-    __mathlib_dbl_underflow                  0x000034bd   Thumb Code    10  dunder.o(i.__mathlib_dbl_underflow)
-    cos                                      0x000034cd   Thumb Code   148  cos.o(i.cos)
-    sin                                      0x00003569   Thumb Code   150  sin.o(i.sin)
-    __aeabi_dadd                             0x00003609   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
-    _dadd                                    0x00003609   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
-    __fpl_dcheck_NaN1                        0x00003759   Thumb Code    10  dcheck1.o(x$fpl$dcheck1)
-    __aeabi_ddiv                             0x00003769   Thumb Code     0  ddiv.o(x$fpl$ddiv)
-    _ddiv                                    0x00003769   Thumb Code   556  ddiv.o(x$fpl$ddiv)
-    __aeabi_d2iz                             0x00003a1d   Thumb Code     0  dfix.o(x$fpl$dfix)
-    _dfix                                    0x00003a1d   Thumb Code    94  dfix.o(x$fpl$dfix)
-    __aeabi_i2d                              0x00003a7b   Thumb Code     0  dflt_clz.o(x$fpl$dflt)
-    _dflt                                    0x00003a7b   Thumb Code    46  dflt_clz.o(x$fpl$dflt)
-    __aeabi_ui2d                             0x00003aa9   Thumb Code     0  dflt_clz.o(x$fpl$dfltu)
-    _dfltu                                   0x00003aa9   Thumb Code    38  dflt_clz.o(x$fpl$dfltu)
-    __aeabi_dmul                             0x00003ad1   Thumb Code     0  dmul.o(x$fpl$dmul)
-    _dmul                                    0x00003ad1   Thumb Code   332  dmul.o(x$fpl$dmul)
-    __fpl_dnaninf                            0x00003c25   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
-    __fpl_dretinf                            0x00003cc1   Thumb Code    12  dretinf.o(x$fpl$dretinf)
-    __aeabi_drsub                            0x00003ccd   Thumb Code     0  daddsub_clz.o(x$fpl$drsb)
-    _drsb                                    0x00003ccd   Thumb Code    22  daddsub_clz.o(x$fpl$drsb)
-    __aeabi_dsub                             0x00003ce5   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
-    _dsub                                    0x00003ce5   Thumb Code   472  daddsub_clz.o(x$fpl$dsub)
-    __fpl_return_NaN                         0x00003ec1   Thumb Code   100  retnan.o(x$fpl$retnan)
-    __ARM_scalbn                             0x00003f25   Thumb Code    92  scalbn.o(x$fpl$scalbn)
-    __fpl_cmpreturn                          0x00003f81   Thumb Code    48  trapv.o(x$fpl$trapveneer)
-    __I$use$fp                               0x00003fb0   Number         0  usenofp.o(x$fpl$usenofp)
-    Difficulty                               0x000040d8   Data        5220  osumain.o(.rodata.Difficulty)
-    ENlang                                   0x0000553c   Data        2600  osumain.o(.rodata.ENlang)
-    FRlang                                   0x00005f64   Data        2600  osumain.o(.rodata.FRlang)
-    Flute                                    0x0000698c   Data          64  sound.o(.rodata.Flute)
-    Lang                                     0x00006ec8   Data        5220  osumain.o(.rodata.Lang)
-    Star                                     0x000083ac   Data          84  song.o(.rodata.Star)
-    cursor                                   0x00008400   Data         800  osumain.o(.rodata.cursor)
-    hitSound                                 0x00008720   Data        2511  wave.o(.rodata.hitSound)
-    hooraySound                              0x000090ef   Data       21891  wave.o(.rodata.hooraySound)
-    mDOWN                                    0x0000e672   Data        3200  osumain.o(.rodata.mDOWN)
-    mLEFT                                    0x0000f2f2   Data        3200  osumain.o(.rodata.mLEFT)
-    mRIGHT                                   0x0000ff72   Data        3200  osumain.o(.rodata.mRIGHT)
-    mUP                                      0x00010bf2   Data        3200  osumain.o(.rodata.mUP)
-    menuButton                               0x00011872   Data        5220  osumain.o(.rodata.menuButton)
-    osuLogo                                  0x00012cd6   Data        9800  osumain.o(.rodata.osuLogo)
-    Region$$Table$$Base                      0x000153ac   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000153cc   Number         0  anon$$obj.o(Region$$Table)
+    ST7735_TransparentDrawBitmap             0x000016d1   Thumb Code   708  st7735.o(.text.ST7735_TransparentDrawBitmap)
+    Scope                                    0x00001995   Thumb Code    24  texas.o(.text.Scope)
+    Song_Init                                0x000019ad   Thumb Code    52  song.o(.text.Song_Init)
+    Song_Play                                0x000019e1   Thumb Code    80  song.o(.text.Song_Play)
+    Sound_Init                               0x00001a31   Thumb Code    44  sound.o(.text.Sound_Init)
+    Sound_Start                              0x00001a5d   Thumb Code    28  sound.o(.text.Sound_Start)
+    SysTick_Handler                          0x00001a79   Thumb Code    38  sound.o(.text.SysTick_Handler)
+    TExaS_Init                               0x00001aa1   Thumb Code   360  texas.o(.text.TExaS_Init)
+    Timer1A_Handler                          0x00001c09   Thumb Code   368  osumain.o(.text.Timer1A_Handler)
+    Timer1_Init                              0x00001d79   Thumb Code   150  timer1.o(.text.Timer1_Init)
+    Timer2A_Handler                          0x00001e11   Thumb Code    94  wave.o(.text.Timer2A_Handler)
+    Timer2A_Init                             0x00001e71   Thumb Code   136  wave.o(.text.Timer2A_Init)
+    Timer3A_Handler                          0x00001ef9   Thumb Code    28  timer3a.o(.text.Timer3A_Handler)
+    Timer3A_Init                             0x00001f15   Thumb Code   158  timer3a.o(.text.Timer3A_Init)
+    Timer5A_Handler                          0x00001fb5   Thumb Code    28  texas.o(.text.Timer5A_Handler)
+    UART0_Init                               0x00001fd1   Thumb Code   160  texas.o(.text.UART0_Init)
+    Wave_Hit                                 0x00002071   Thumb Code    20  wave.o(.text.Wave_Hit)
+    Wave_Hooray                              0x00002085   Thumb Code    20  wave.o(.text.Wave_Hooray)
+    Wave_Init                                0x00002099   Thumb Code    32  wave.o(.text.Wave_Init)
+    Wave_Start                               0x000020b9   Thumb Code    48  wave.o(.text.Wave_Start)
+    Wave_Stop                                0x000020e9   Thumb Code    16  wave.o(.text.Wave_Stop)
+    difficultySelectScreen                   0x00002349   Thumb Code   116  osumain.o(.text.difficultySelectScreen)
+    drawSquare                               0x000023bd   Thumb Code    36  osumain.o(.text.drawSquare)
+    drawSquaresInCircle                      0x000023e1   Thumb Code  1550  osumain.o(.text.drawSquaresInCircle)
+    endScreen                                0x000029f1   Thumb Code   124  osumain.o(.text.endScreen)
+    hover                                    0x00002a6d   Thumb Code   218  osumain.o(.text.hover)
+    languageSelectScreen                     0x00002b49   Thumb Code    68  osumain.o(.text.languageSelectScreen)
+    main                                     0x00002b8d   Thumb Code   848  osumain.o(.text.main)
+    menuSelectOption                         0x00002edd   Thumb Code   586  osumain.o(.text.menuSelectOption)
+    startScreen                              0x000031d9   Thumb Code   182  osumain.o(.text.startScreen)
+    writecommand                             0x00003291   Thumb Code    44  st7735.o(.text.writecommand)
+    writedata                                0x000032bd   Thumb Code    44  st7735.o(.text.writedata)
+    __ARM_fpclassify                         0x000032e9   Thumb Code    40  fpclassify.o(i.__ARM_fpclassify)
+    __ieee754_rem_pio2                       0x00003311   Thumb Code   828  rred.o(i.__ieee754_rem_pio2)
+    __kernel_cos                             0x00003699   Thumb Code   230  cos_i.o(i.__kernel_cos)
+    __kernel_poly                            0x00003795   Thumb Code   170  poly.o(i.__kernel_poly)
+    __kernel_sin                             0x00003841   Thumb Code   224  sin_i.o(i.__kernel_sin)
+    __mathlib_dbl_infnan                     0x0000392d   Thumb Code     6  dunder.o(i.__mathlib_dbl_infnan)
+    __mathlib_dbl_invalid                    0x00003933   Thumb Code    12  dunder.o(i.__mathlib_dbl_invalid)
+    __mathlib_dbl_underflow                  0x00003941   Thumb Code    10  dunder.o(i.__mathlib_dbl_underflow)
+    cos                                      0x00003951   Thumb Code   148  cos.o(i.cos)
+    sin                                      0x000039ed   Thumb Code   150  sin.o(i.sin)
+    __aeabi_dadd                             0x00003a8d   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    _dadd                                    0x00003a8d   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
+    __fpl_dcheck_NaN1                        0x00003bdd   Thumb Code    10  dcheck1.o(x$fpl$dcheck1)
+    __aeabi_ddiv                             0x00003bed   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    _ddiv                                    0x00003bed   Thumb Code   556  ddiv.o(x$fpl$ddiv)
+    __aeabi_d2iz                             0x00003ea1   Thumb Code     0  dfix.o(x$fpl$dfix)
+    _dfix                                    0x00003ea1   Thumb Code    94  dfix.o(x$fpl$dfix)
+    __aeabi_i2d                              0x00003eff   Thumb Code     0  dflt_clz.o(x$fpl$dflt)
+    _dflt                                    0x00003eff   Thumb Code    46  dflt_clz.o(x$fpl$dflt)
+    __aeabi_ui2d                             0x00003f2d   Thumb Code     0  dflt_clz.o(x$fpl$dfltu)
+    _dfltu                                   0x00003f2d   Thumb Code    38  dflt_clz.o(x$fpl$dfltu)
+    __aeabi_dmul                             0x00003f55   Thumb Code     0  dmul.o(x$fpl$dmul)
+    _dmul                                    0x00003f55   Thumb Code   332  dmul.o(x$fpl$dmul)
+    __fpl_dnaninf                            0x000040a9   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
+    __fpl_dretinf                            0x00004145   Thumb Code    12  dretinf.o(x$fpl$dretinf)
+    __aeabi_drsub                            0x00004151   Thumb Code     0  daddsub_clz.o(x$fpl$drsb)
+    _drsb                                    0x00004151   Thumb Code    22  daddsub_clz.o(x$fpl$drsb)
+    __aeabi_dsub                             0x00004169   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    _dsub                                    0x00004169   Thumb Code   472  daddsub_clz.o(x$fpl$dsub)
+    __fpl_return_NaN                         0x00004345   Thumb Code   100  retnan.o(x$fpl$retnan)
+    __ARM_scalbn                             0x000043a9   Thumb Code    92  scalbn.o(x$fpl$scalbn)
+    __fpl_cmpreturn                          0x00004405   Thumb Code    48  trapv.o(x$fpl$trapveneer)
+    __I$use$fp                               0x00004434   Number         0  usenofp.o(x$fpl$usenofp)
+    Difficulty                               0x00004560   Data        5220  osumain.o(.rodata.Difficulty)
+    ENlang                                   0x000059c4   Data        2600  osumain.o(.rodata.ENlang)
+    FRlang                                   0x000063ec   Data        2600  osumain.o(.rodata.FRlang)
+    Flute                                    0x00006e14   Data          64  sound.o(.rodata.Flute)
+    Lang                                     0x00007350   Data        5220  osumain.o(.rodata.Lang)
+    Star                                     0x00008834   Data          84  song.o(.rodata.Star)
+    cursor                                   0x00008888   Data         800  osumain.o(.rodata.cursor)
+    hitSound                                 0x00008ba8   Data        2511  wave.o(.rodata.hitSound)
+    hooraySound                              0x00009577   Data       21891  wave.o(.rodata.hooraySound)
+    mDOWN                                    0x0000eafa   Data        3200  osumain.o(.rodata.mDOWN)
+    mLEFT                                    0x0000f77a   Data        3200  osumain.o(.rodata.mLEFT)
+    mRIGHT                                   0x000103fa   Data        3200  osumain.o(.rodata.mRIGHT)
+    mUP                                      0x0001107a   Data        3200  osumain.o(.rodata.mUP)
+    menuButton                               0x00011cfa   Data        5220  osumain.o(.rodata.menuButton)
+    osuLogo                                  0x0001315e   Data        9800  osumain.o(.rodata.osuLogo)
+    Region$$Table$$Base                      0x00015850   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00015870   Number         0  anon$$obj.o(Region$$Table)
     StTextColor                              0x20000000   Data           2  st7735.o(.data.StTextColor)
-    dirPressed                               0x20000006   Data           1  osumain.o(.data.dirPressed)
-    pi                                       0x20000008   Data           8  osumain.o(.data.pi)
-    __libspace_start                         0x20000018   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x20000078   Data           0  libspace.o(.bss)
-    Length                                   0x2000007c   Data           4  wave.o(.bss.Length)
-    Message                                  0x20000080   Data          12  st7735.o(.bss.Message)
-    PeriodicTask2                            0x2000008c   Data           4  texas.o(.bss.PeriodicTask2)
-    PeriodicTask3                            0x20000090   Data           4  timer3a.o(.bss.PeriodicTask3)
-    Soundpt                                  0x20000098   Data           4  wave.o(.bss.Soundpt)
-    StX                                      0x2000009c   Data           4  st7735.o(.bss.StX)
-    StY                                      0x200000a0   Data           4  st7735.o(.bss.StY)
-    difficulty                               0x200000a5   Data           1  osumain.o(.bss.difficulty)
-    difficultyPos                            0x200000a8   Data          20  osumain.o(.bss.difficultyPos)
-    hitCircleFlag                            0x200000bc   Data           2  song.o(.bss.hitCircleFlag)
-    hitSquare                                0x200000c0   Data          20  osumain.o(.bss.hitSquare)
-    i                                        0x200000d4   Data           1  song.o(.bss.i)
-    index                                    0x200000d5   Data           1  sound.o(.bss.index)
-    joyButton                                0x200000d6   Data           1  osumain.o(.bss.joyButton)
-    joystickData                             0x200000d8   Data           8  osumain.o(.bss.joystickData)
-    langPos                                  0x200000e0   Data          20  osumain.o(.bss.langPos)
-    langauge                                 0x200000f4   Data           1  osumain.o(.bss.langauge)
-    menuPos                                  0x200000f8   Data          20  osumain.o(.bss.menuPos)
-    mouse                                    0x2000010c   Data          20  osumain.o(.bss.mouse)
-    option                                   0x20000120   Data           1  osumain.o(.bss.option)
-    osuVals                                  0x20000124   Data          20  osumain.o(.bss.osuVals)
-    score                                    0x20000138   Data           4  osumain.o(.bss.score)
+    arrDirection                             0x20000006   Data          43  osumain.o(.data.arrDirection)
+    dirPressed                               0x20000031   Data           1  osumain.o(.data.dirPressed)
+    pi                                       0x20000038   Data           8  osumain.o(.data.pi)
+    __libspace_start                         0x20000048   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x200000a8   Data           0  libspace.o(.bss)
+    Length                                   0x200000ac   Data           4  wave.o(.bss.Length)
+    Message                                  0x200000b0   Data          12  st7735.o(.bss.Message)
+    PeriodicTask2                            0x200000bc   Data           4  texas.o(.bss.PeriodicTask2)
+    PeriodicTask3                            0x200000c0   Data           4  timer3a.o(.bss.PeriodicTask3)
+    Soundpt                                  0x200000c8   Data           4  wave.o(.bss.Soundpt)
+    StX                                      0x200000cc   Data           4  st7735.o(.bss.StX)
+    StY                                      0x200000d0   Data           4  st7735.o(.bss.StY)
+    difficulty                               0x200000d5   Data           1  osumain.o(.bss.difficulty)
+    difficultyPos                            0x200000d8   Data          28  osumain.o(.bss.difficultyPos)
+    hitCircleFlag                            0x200000f4   Data           2  song.o(.bss.hitCircleFlag)
+    hitSquare                                0x200000f8   Data          28  osumain.o(.bss.hitSquare)
+    i                                        0x20000114   Data           1  song.o(.bss.i)
+    index                                    0x20000115   Data           1  sound.o(.bss.index)
+    joyButton                                0x20000116   Data           1  osumain.o(.bss.joyButton)
+    joystickData                             0x20000118   Data           8  osumain.o(.bss.joystickData)
+    langPos                                  0x20000120   Data          28  osumain.o(.bss.langPos)
+    langauge                                 0x2000013c   Data           1  osumain.o(.bss.langauge)
+    menuPos                                  0x20000140   Data          28  osumain.o(.bss.menuPos)
+    mouse                                    0x2000015c   Data          28  osumain.o(.bss.mouse)
+    option                                   0x20000178   Data           1  osumain.o(.bss.option)
+    osuVals                                  0x2000017c   Data          28  osumain.o(.bss.osuVals)
+    score                                    0x20000198   Data           4  osumain.o(.bss.score)
 
 
 
@@ -1548,95 +1560,95 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x000153e4, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x000158b4, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000153cc, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00015870, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x00000000   0x00000284   Code   RO            3  * RESET               startup.o
-    0x00000284   0x00000284   0x00000008   Code   RO          419  * !!!main             c_w.l(__main.o)
-    0x0000028c   0x0000028c   0x00000034   Code   RO          663    !!!scatter          c_w.l(__scatter.o)
-    0x000002c0   0x000002c0   0x0000001a   Code   RO          665    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x00000284   0x00000284   0x00000008   Code   RO          420  * !!!main             c_w.l(__main.o)
+    0x0000028c   0x0000028c   0x00000034   Code   RO          664    !!!scatter          c_w.l(__scatter.o)
+    0x000002c0   0x000002c0   0x0000001a   Code   RO          666    !!handler_copy      c_w.l(__scatter_copy.o)
     0x000002da   0x000002da   0x00000002   PAD
-    0x000002dc   0x000002dc   0x0000001c   Code   RO          667    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x000002f8   0x000002f8   0x00000002   Code   RO          522    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          528    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          530    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          532    .ARM.Collect$$libinit$$00000006  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          535    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          537    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          539    .ARM.Collect$$libinit$$00000010  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          542    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          544    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          546    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          548    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          550    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          552    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          554    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          556    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          558    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          560    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          562    .ARM.Collect$$libinit$$00000027  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          566    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          568    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          570    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          572    .ARM.Collect$$libinit$$00000034  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000002   Code   RO          573    .ARM.Collect$$libinit$$00000035  c_w.l(libinit2.o)
-    0x000002fc   0x000002fc   0x00000002   Code   RO          599    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x000002fe   0x000002fe   0x00000000   Code   RO          614    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x000002fe   0x000002fe   0x00000000   Code   RO          616    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x000002fe   0x000002fe   0x00000000   Code   RO          619    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x000002fe   0x000002fe   0x00000000   Code   RO          622    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x000002fe   0x000002fe   0x00000000   Code   RO          624    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x000002fe   0x000002fe   0x00000000   Code   RO          627    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x000002fe   0x000002fe   0x00000002   Code   RO          628    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x00000300   0x00000300   0x00000000   Code   RO          451    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x00000300   0x00000300   0x00000000   Code   RO          485    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x00000300   0x00000300   0x00000006   Code   RO          497    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x00000306   0x00000306   0x00000000   Code   RO          487    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x00000306   0x00000306   0x00000004   Code   RO          488    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x0000030a   0x0000030a   0x00000000   Code   RO          490    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x0000030a   0x0000030a   0x00000008   Code   RO          491    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x00000312   0x00000312   0x00000002   Code   RO          525    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x00000314   0x00000314   0x00000000   Code   RO          577    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x00000314   0x00000314   0x00000004   Code   RO          578    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x00000318   0x00000318   0x00000006   Code   RO          579    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x000002dc   0x000002dc   0x0000001c   Code   RO          668    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x000002f8   0x000002f8   0x00000002   Code   RO          523    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          529    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          531    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          533    .ARM.Collect$$libinit$$00000006  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          536    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          538    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          540    .ARM.Collect$$libinit$$00000010  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          543    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          545    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          547    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          549    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          551    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          553    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          555    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          557    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          559    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          561    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          563    .ARM.Collect$$libinit$$00000027  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          567    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          569    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          571    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          573    .ARM.Collect$$libinit$$00000034  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000002   Code   RO          574    .ARM.Collect$$libinit$$00000035  c_w.l(libinit2.o)
+    0x000002fc   0x000002fc   0x00000002   Code   RO          600    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x000002fe   0x000002fe   0x00000000   Code   RO          615    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x000002fe   0x000002fe   0x00000000   Code   RO          617    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x000002fe   0x000002fe   0x00000000   Code   RO          620    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x000002fe   0x000002fe   0x00000000   Code   RO          623    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x000002fe   0x000002fe   0x00000000   Code   RO          625    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x000002fe   0x000002fe   0x00000000   Code   RO          628    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x000002fe   0x000002fe   0x00000002   Code   RO          629    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x00000300   0x00000300   0x00000000   Code   RO          452    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x00000300   0x00000300   0x00000000   Code   RO          486    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x00000300   0x00000300   0x00000006   Code   RO          498    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x00000306   0x00000306   0x00000000   Code   RO          488    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x00000306   0x00000306   0x00000004   Code   RO          489    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x0000030a   0x0000030a   0x00000000   Code   RO          491    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x0000030a   0x0000030a   0x00000008   Code   RO          492    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x00000312   0x00000312   0x00000002   Code   RO          526    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x00000314   0x00000314   0x00000000   Code   RO          578    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x00000314   0x00000314   0x00000004   Code   RO          579    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x00000318   0x00000318   0x00000006   Code   RO          580    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x0000031e   0x0000031e   0x00000002   PAD
     0x00000320   0x00000320   0x00000030   Code   RO            4    .text               startup.o
     0x00000350   0x00000350   0x0000003c   Code   RO           13    .text               random.o
-    0x0000038c   0x0000038c   0x00000038   Code   RO          304    .text               busywait.o
-    0x000003c4   0x000003c4   0x000000f0   Code   RO          307    .text               stringconversion.o
-    0x000004b4   0x000004b4   0x00000008   Code   RO          415    .text               c_w.l(abs.o)
-    0x000004bc   0x000004bc   0x00000006   Code   RO          417    .text               c_w.l(heapauxi.o)
-    0x000004c2   0x000004c2   0x00000016   Code   RO          452    .text               c_w.l(_rserrno.o)
-    0x000004d8   0x000004d8   0x00000008   Code   RO          502    .text               c_w.l(rt_errno_addr_intlibspace.o)
-    0x000004e0   0x000004e0   0x00000008   Code   RO          510    .text               c_w.l(libspace.o)
-    0x000004e8   0x000004e8   0x0000004a   Code   RO          513    .text               c_w.l(sys_stackheap_outer.o)
-    0x00000532   0x00000532   0x00000012   Code   RO          515    .text               c_w.l(exit.o)
-    0x00000544   0x00000544   0x0000000c   Code   RO          589    .text               c_w.l(sys_exit.o)
-    0x00000550   0x00000550   0x00000002   Code   RO          604    .text               c_w.l(use_no_semi.o)
-    0x00000552   0x00000552   0x00000000   Code   RO          606    .text               c_w.l(indicate_semi.o)
+    0x0000038c   0x0000038c   0x00000038   Code   RO          305    .text               busywait.o
+    0x000003c4   0x000003c4   0x000000f0   Code   RO          308    .text               stringconversion.o
+    0x000004b4   0x000004b4   0x00000008   Code   RO          416    .text               c_w.l(abs.o)
+    0x000004bc   0x000004bc   0x00000006   Code   RO          418    .text               c_w.l(heapauxi.o)
+    0x000004c2   0x000004c2   0x00000016   Code   RO          453    .text               c_w.l(_rserrno.o)
+    0x000004d8   0x000004d8   0x00000008   Code   RO          503    .text               c_w.l(rt_errno_addr_intlibspace.o)
+    0x000004e0   0x000004e0   0x00000008   Code   RO          511    .text               c_w.l(libspace.o)
+    0x000004e8   0x000004e8   0x0000004a   Code   RO          514    .text               c_w.l(sys_stackheap_outer.o)
+    0x00000532   0x00000532   0x00000012   Code   RO          516    .text               c_w.l(exit.o)
+    0x00000544   0x00000544   0x0000000c   Code   RO          590    .text               c_w.l(sys_exit.o)
+    0x00000550   0x00000550   0x00000002   Code   RO          605    .text               c_w.l(use_no_semi.o)
+    0x00000552   0x00000552   0x00000000   Code   RO          607    .text               c_w.l(indicate_semi.o)
     0x00000552   0x00000552   0x00000002   PAD
     0x00000554   0x00000554   0x000000fc   Code   RO           64    .text.ADC1_Init     texas.o
-    0x00000650   0x00000650   0x00000100   Code   RO          144    .text.ADC_Init      adc.o
-    0x00000750   0x00000750   0x0000004a   Code   RO          155    .text.DAC_Init      dac.o
+    0x00000650   0x00000650   0x00000100   Code   RO          145    .text.ADC_Init      adc.o
+    0x00000750   0x00000750   0x0000004a   Code   RO          156    .text.DAC_Init      dac.o
     0x0000079a   0x0000079a   0x00000002   PAD
-    0x0000079c   0x0000079c   0x00000014   Code   RO          157    .text.DAC_Out       dac.o
-    0x000007b0   0x000007b0   0x00000032   Code   RO           84    .text.Delay100ms    osumain.o
+    0x0000079c   0x0000079c   0x00000014   Code   RO          158    .text.DAC_Out       dac.o
+    0x000007b0   0x000007b0   0x00000032   Code   RO           86    .text.Delay100ms    osumain.o
     0x000007e2   0x000007e2   0x00000002   PAD
-    0x000007e4   0x000007e4   0x0000002e   Code   RO          178    .text.Delay1ms      st7735.o
+    0x000007e4   0x000007e4   0x0000002e   Code   RO          179    .text.Delay1ms      st7735.o
     0x00000812   0x00000812   0x00000002   PAD
-    0x00000814   0x00000814   0x0000009a   Code   RO          342    .text.EdgeTrigger_Init  edgetrigger.o
+    0x00000814   0x00000814   0x0000009a   Code   RO          343    .text.EdgeTrigger_Init  edgetrigger.o
     0x000008ae   0x000008ae   0x00000002   PAD
     0x000008b0   0x000008b0   0x0000001a   Code   RO           80    .text.GPIOPortC_Handler  osumain.o
     0x000008ca   0x000008ca   0x00000002   PAD
     0x000008cc   0x000008cc   0x0000006c   Code   RO           78    .text.GPIOPortE_Handler  osumain.o
-    0x00000938   0x00000938   0x0000003a   Code   RO           86    .text.GPIO_PortD_Init  osumain.o
+    0x00000938   0x00000938   0x0000003a   Code   RO           84    .text.GPIO_PortD_Init  osumain.o
     0x00000972   0x00000972   0x00000002   PAD
-    0x00000974   0x00000974   0x00000052   Code   RO          352    .text.JoyStick_In   joystick.o
+    0x00000974   0x00000974   0x00000052   Code   RO          353    .text.JoyStick_In   joystick.o
     0x000009c6   0x000009c6   0x00000002   PAD
-    0x000009c8   0x000009c8   0x00000188   Code   RO          350    .text.JoyStick_Init  joystick.o
+    0x000009c8   0x000009c8   0x00000188   Code   RO          351    .text.JoyStick_Init  joystick.o
     0x00000b50   0x00000b50   0x0000001c   Code   RO           40    .text.LogicAnalyzerA  texas.o
     0x00000b6c   0x00000b6c   0x0000001a   Code   RO           42    .text.LogicAnalyzerB  texas.o
     0x00000b86   0x00000b86   0x00000002   PAD
@@ -1645,187 +1657,189 @@ Memory Map of the image
     0x00000bbe   0x00000bbe   0x00000002   PAD
     0x00000bc0   0x00000bc0   0x0000001a   Code   RO           48    .text.LogicAnalyzerF  texas.o
     0x00000bda   0x00000bda   0x00000002   PAD
-    0x00000bdc   0x00000bdc   0x00000010   Code   RO          262    .text.Output_Init   st7735.o
-    0x00000bec   0x00000bec   0x0000008a   Code   RO          166    .text.PLL_Init      pll.o
+    0x00000bdc   0x00000bdc   0x00000010   Code   RO          263    .text.Output_Init   st7735.o
+    0x00000bec   0x00000bec   0x0000008a   Code   RO          167    .text.PLL_Init      pll.o
     0x00000c76   0x00000c76   0x00000002   PAD
     0x00000c78   0x00000c78   0x000000e8   Code   RO           50    .text.PeriodicTask2_Init  texas.o
-    0x00000d60   0x00000d60   0x00000252   Code   RO          218    .text.ST7735_DrawBitmap  st7735.o
+    0x00000d60   0x00000d60   0x00000252   Code   RO          219    .text.ST7735_DrawBitmap  st7735.o
     0x00000fb2   0x00000fb2   0x00000002   PAD
-    0x00000fb4   0x00000fb4   0x000001b4   Code   RO          220    .text.ST7735_DrawCharS  st7735.o
-    0x00001168   0x00001168   0x00000070   Code   RO          192    .text.ST7735_DrawPixel  st7735.o
-    0x000011d8   0x000011d8   0x0000009a   Code   RO          224    .text.ST7735_DrawString  st7735.o
+    0x00000fb4   0x00000fb4   0x000001b4   Code   RO          221    .text.ST7735_DrawCharS  st7735.o
+    0x00001168   0x00001168   0x00000070   Code   RO          193    .text.ST7735_DrawPixel  st7735.o
+    0x000011d8   0x000011d8   0x0000009a   Code   RO          225    .text.ST7735_DrawString  st7735.o
     0x00001272   0x00001272   0x00000002   PAD
-    0x00001274   0x00001274   0x0000013e   Code   RO          202    .text.ST7735_FillRect  st7735.o
+    0x00001274   0x00001274   0x0000013e   Code   RO          203    .text.ST7735_FillRect  st7735.o
     0x000013b2   0x000013b2   0x00000002   PAD
-    0x000013b4   0x000013b4   0x00000034   Code   RO          186    .text.ST7735_FillScreen  st7735.o
-    0x000013e8   0x000013e8   0x000000a6   Code   RO          188    .text.ST7735_InitR  st7735.o
+    0x000013b4   0x000013b4   0x00000034   Code   RO          187    .text.ST7735_FillScreen  st7735.o
+    0x000013e8   0x000013e8   0x000000a6   Code   RO          189    .text.ST7735_InitR  st7735.o
     0x0000148e   0x0000148e   0x00000002   PAD
-    0x00001490   0x00001490   0x0000010e   Code   RO          250    .text.ST7735_OutChar  st7735.o
+    0x00001490   0x00001490   0x0000010e   Code   RO          251    .text.ST7735_OutChar  st7735.o
     0x0000159e   0x0000159e   0x00000002   PAD
-    0x000015a0   0x000015a0   0x00000024   Code   RO          252    .text.ST7735_OutString  st7735.o
-    0x000015c4   0x000015c4   0x000000b8   Code   RO          226    .text.ST7735_OutUDec  st7735.o
-    0x0000167c   0x0000167c   0x00000036   Code   RO          184    .text.ST7735_SetCursor  st7735.o
+    0x000015a0   0x000015a0   0x00000024   Code   RO          253    .text.ST7735_OutString  st7735.o
+    0x000015c4   0x000015c4   0x000000b8   Code   RO          227    .text.ST7735_OutUDec  st7735.o
+    0x0000167c   0x0000167c   0x00000036   Code   RO          185    .text.ST7735_SetCursor  st7735.o
     0x000016b2   0x000016b2   0x00000002   PAD
-    0x000016b4   0x000016b4   0x0000001c   Code   RO          212    .text.ST7735_SwapColor  st7735.o
-    0x000016d0   0x000016d0   0x00000018   Code   RO           38    .text.Scope         texas.o
-    0x000016e8   0x000016e8   0x00000034   Code   RO          384    .text.Song_Init     song.o
-    0x0000171c   0x0000171c   0x00000050   Code   RO          386    .text.Song_Play     song.o
-    0x0000176c   0x0000176c   0x0000002c   Code   RO          361    .text.Sound_Init    sound.o
-    0x00001798   0x00001798   0x0000001c   Code   RO          363    .text.Sound_Start   sound.o
-    0x000017b4   0x000017b4   0x00000026   Code   RO          371    .text.SysTick_Handler  sound.o
-    0x000017da   0x000017da   0x00000002   PAD
-    0x000017dc   0x000017dc   0x00000168   Code   RO           66    .text.TExaS_Init    texas.o
-    0x00001944   0x00001944   0x00000170   Code   RO           82    .text.Timer1A_Handler  osumain.o
-    0x00001ab4   0x00001ab4   0x00000096   Code   RO           30    .text.Timer1_Init   timer1.o
-    0x00001b4a   0x00001b4a   0x00000002   PAD
-    0x00001b4c   0x00001b4c   0x0000005e   Code   RO          319    .text.Timer2A_Handler  wave.o
-    0x00001baa   0x00001baa   0x00000002   PAD
-    0x00001bac   0x00001bac   0x00000088   Code   RO          311    .text.Timer2A_Init  wave.o
-    0x00001c34   0x00001c34   0x0000001c   Code   RO          402    .text.Timer3A_Handler  timer3a.o
-    0x00001c50   0x00001c50   0x0000009e   Code   RO          400    .text.Timer3A_Init  timer3a.o
-    0x00001cee   0x00001cee   0x00000002   PAD
-    0x00001cf0   0x00001cf0   0x0000001c   Code   RO           52    .text.Timer5A_Handler  texas.o
-    0x00001d0c   0x00001d0c   0x000000a0   Code   RO           56    .text.UART0_Init    texas.o
-    0x00001dac   0x00001dac   0x00000014   Code   RO          323    .text.Wave_Hit      wave.o
-    0x00001dc0   0x00001dc0   0x00000014   Code   RO          327    .text.Wave_Hooray   wave.o
-    0x00001dd4   0x00001dd4   0x00000020   Code   RO          317    .text.Wave_Init     wave.o
-    0x00001df4   0x00001df4   0x00000030   Code   RO          321    .text.Wave_Start    wave.o
-    0x00001e24   0x00001e24   0x00000010   Code   RO          315    .text.Wave_Stop     wave.o
-    0x00001e34   0x00001e34   0x000000aa   Code   RO          190    .text.commandList   st7735.o
-    0x00001ede   0x00001ede   0x00000002   PAD
-    0x00001ee0   0x00001ee0   0x000001a2   Code   RO          182    .text.commonInit    st7735.o
-    0x00002082   0x00002082   0x00000002   PAD
-    0x00002084   0x00002084   0x00000074   Code   RO           96    .text.difficultySelectScreen  osumain.o
-    0x000020f8   0x000020f8   0x00000024   Code   RO          106    .text.drawSquare    osumain.o
-    0x0000211c   0x0000211c   0x000004d6   Code   RO           98    .text.drawSquaresInCircle  osumain.o
-    0x000025f2   0x000025f2   0x00000002   PAD
-    0x000025f4   0x000025f4   0x0000007c   Code   RO          100    .text.endScreen     osumain.o
-    0x00002670   0x00002670   0x000000b6   Code   RO          102    .text.hover         osumain.o
-    0x00002726   0x00002726   0x00000002   PAD
-    0x00002728   0x00002728   0x00000044   Code   RO           94    .text.languageSelectScreen  osumain.o
-    0x0000276c   0x0000276c   0x00000336   Code   RO           88    .text.main          osumain.o
-    0x00002aa2   0x00002aa2   0x00000002   PAD
-    0x00002aa4   0x00002aa4   0x000001fe   Code   RO           92    .text.menuSelectOption  osumain.o
-    0x00002ca2   0x00002ca2   0x00000002   PAD
-    0x00002ca4   0x00002ca4   0x0000001c   Code   RO          196    .text.pushColor     st7735.o
-    0x00002cc0   0x00002cc0   0x00000094   Code   RO          194    .text.setAddrWindow  st7735.o
-    0x00002d54   0x00002d54   0x000000b6   Code   RO           90    .text.startScreen   osumain.o
-    0x00002e0a   0x00002e0a   0x00000002   PAD
-    0x00002e0c   0x00002e0c   0x0000002c   Code   RO          174    .text.writecommand  st7735.o
-    0x00002e38   0x00002e38   0x0000002c   Code   RO          176    .text.writedata     st7735.o
-    0x00002e64   0x00002e64   0x00000028   Code   RO          506    i.__ARM_fpclassify  m_ws.l(fpclassify.o)
-    0x00002e8c   0x00002e8c   0x00000388   Code   RO          476    i.__ieee754_rem_pio2  m_ws.l(rred.o)
-    0x00003214   0x00003214   0x000000fc   Code   RO          459    i.__kernel_cos      m_ws.l(cos_i.o)
-    0x00003310   0x00003310   0x000000aa   Code   RO          508    i.__kernel_poly     m_ws.l(poly.o)
-    0x000033ba   0x000033ba   0x00000002   PAD
-    0x000033bc   0x000033bc   0x000000ec   Code   RO          481    i.__kernel_sin      m_ws.l(sin_i.o)
-    0x000034a8   0x000034a8   0x00000006   Code   RO          463    i.__mathlib_dbl_infnan  m_ws.l(dunder.o)
-    0x000034ae   0x000034ae   0x0000000c   Code   RO          465    i.__mathlib_dbl_invalid  m_ws.l(dunder.o)
-    0x000034ba   0x000034ba   0x00000002   PAD
-    0x000034bc   0x000034bc   0x00000010   Code   RO          468    i.__mathlib_dbl_underflow  m_ws.l(dunder.o)
-    0x000034cc   0x000034cc   0x0000009c   Code   RO          444    i.cos               m_ws.l(cos.o)
-    0x00003568   0x00003568   0x000000a0   Code   RO          448    i.sin               m_ws.l(sin.o)
-    0x00003608   0x00003608   0x00000150   Code   RO          421    x$fpl$dadd          fz_ws.l(daddsub_clz.o)
-    0x00003758   0x00003758   0x00000010   Code   RO          523    x$fpl$dcheck1       fz_ws.l(dcheck1.o)
-    0x00003768   0x00003768   0x000002b4   Code   RO          428    x$fpl$ddiv          fz_ws.l(ddiv.o)
-    0x00003a1c   0x00003a1c   0x0000005e   Code   RO          431    x$fpl$dfix          fz_ws.l(dfix.o)
-    0x00003a7a   0x00003a7a   0x0000002e   Code   RO          436    x$fpl$dflt          fz_ws.l(dflt_clz.o)
-    0x00003aa8   0x00003aa8   0x00000026   Code   RO          435    x$fpl$dfltu         fz_ws.l(dflt_clz.o)
-    0x00003ace   0x00003ace   0x00000002   PAD
-    0x00003ad0   0x00003ad0   0x00000154   Code   RO          441    x$fpl$dmul          fz_ws.l(dmul.o)
-    0x00003c24   0x00003c24   0x0000009c   Code   RO          454    x$fpl$dnaninf       fz_ws.l(dnaninf.o)
-    0x00003cc0   0x00003cc0   0x0000000c   Code   RO          456    x$fpl$dretinf       fz_ws.l(dretinf.o)
-    0x00003ccc   0x00003ccc   0x00000016   Code   RO          422    x$fpl$drsb          fz_ws.l(daddsub_clz.o)
-    0x00003ce2   0x00003ce2   0x00000002   PAD
-    0x00003ce4   0x00003ce4   0x000001dc   Code   RO          423    x$fpl$dsub          fz_ws.l(daddsub_clz.o)
-    0x00003ec0   0x00003ec0   0x00000064   Code   RO          574    x$fpl$retnan        fz_ws.l(retnan.o)
-    0x00003f24   0x00003f24   0x0000005c   Code   RO          504    x$fpl$scalbn        fz_ws.l(scalbn.o)
-    0x00003f80   0x00003f80   0x00000030   Code   RO          587    x$fpl$trapveneer    fz_ws.l(trapv.o)
-    0x00003fb0   0x00003fb0   0x00000000   Code   RO          458    x$fpl$usenofp       fz_ws.l(usenofp.o)
-    0x00003fb0   0x00003fb0   0x00000030   Data   RO          460    .constdata          m_ws.l(cos_i.o)
-    0x00003fe0   0x00003fe0   0x000000cc   Data   RO          478    .constdata          m_ws.l(rred.o)
-    0x000040ac   0x000040ac   0x00000004   PAD
-    0x000040b0   0x000040b0   0x00000028   Data   RO          482    .constdata          m_ws.l(sin_i.o)
-    0x000040d8   0x000040d8   0x00001464   Data   RO          111    .rodata.Difficulty  osumain.o
-    0x0000553c   0x0000553c   0x00000a28   Data   RO          112    .rodata.ENlang      osumain.o
-    0x00005f64   0x00005f64   0x00000a28   Data   RO          113    .rodata.FRlang      osumain.o
-    0x0000698c   0x0000698c   0x00000040   Data   RO          375    .rodata.Flute       sound.o
-    0x000069cc   0x000069cc   0x000004fb   Data   RO          287    .rodata.Font        st7735.o
-    0x00006ec7   0x00006ec7   0x00000001   PAD
-    0x00006ec8   0x00006ec8   0x00001464   Data   RO          110    .rodata.Lang        osumain.o
-    0x0000832c   0x0000832c   0x0000003b   Data   RO          276    .rodata.Rcmd1       st7735.o
-    0x00008367   0x00008367   0x0000000d   Data   RO          277    .rodata.Rcmd2green  st7735.o
-    0x00008374   0x00008374   0x0000000d   Data   RO          280    .rodata.Rcmd2red    st7735.o
-    0x00008381   0x00008381   0x0000002b   Data   RO          281    .rodata.Rcmd3       st7735.o
-    0x000083ac   0x000083ac   0x00000054   Data   RO          390    .rodata.Star        song.o
-    0x00008400   0x00008400   0x00000320   Data   RO          108    .rodata.cursor      osumain.o
-    0x00008720   0x00008720   0x000009cf   Data   RO          332    .rodata.hitSound    wave.o
-    0x000090ef   0x000090ef   0x00005583   Data   RO          334    .rodata.hooraySound  wave.o
-    0x0000e672   0x0000e672   0x00000c80   Data   RO          114    .rodata.mDOWN       osumain.o
-    0x0000f2f2   0x0000f2f2   0x00000c80   Data   RO          116    .rodata.mLEFT       osumain.o
-    0x0000ff72   0x0000ff72   0x00000c80   Data   RO          115    .rodata.mRIGHT      osumain.o
-    0x00010bf2   0x00010bf2   0x00000c80   Data   RO          117    .rodata.mUP         osumain.o
-    0x00011872   0x00011872   0x00001464   Data   RO          118    .rodata.menuButton  osumain.o
-    0x00012cd6   0x00012cd6   0x00002648   Data   RO          109    .rodata.osuLogo     osumain.o
-    0x0001531e   0x0001531e   0x00000075   Data   RO          123    .rodata.str1.1      osumain.o
-    0x00015393   0x00015393   0x00000016   Data   RO          296    .rodata.str1.1      st7735.o
-    0x000153a9   0x000153a9   0x00000003   PAD
-    0x000153ac   0x000153ac   0x00000020   Data   RO          662    Region$$Table       anon$$obj.o
+    0x000016b4   0x000016b4   0x0000001c   Code   RO          213    .text.ST7735_SwapColor  st7735.o
+    0x000016d0   0x000016d0   0x000002c4   Code   RO          217    .text.ST7735_TransparentDrawBitmap  st7735.o
+    0x00001994   0x00001994   0x00000018   Code   RO           38    .text.Scope         texas.o
+    0x000019ac   0x000019ac   0x00000034   Code   RO          385    .text.Song_Init     song.o
+    0x000019e0   0x000019e0   0x00000050   Code   RO          387    .text.Song_Play     song.o
+    0x00001a30   0x00001a30   0x0000002c   Code   RO          362    .text.Sound_Init    sound.o
+    0x00001a5c   0x00001a5c   0x0000001c   Code   RO          364    .text.Sound_Start   sound.o
+    0x00001a78   0x00001a78   0x00000026   Code   RO          372    .text.SysTick_Handler  sound.o
+    0x00001a9e   0x00001a9e   0x00000002   PAD
+    0x00001aa0   0x00001aa0   0x00000168   Code   RO           66    .text.TExaS_Init    texas.o
+    0x00001c08   0x00001c08   0x00000170   Code   RO           82    .text.Timer1A_Handler  osumain.o
+    0x00001d78   0x00001d78   0x00000096   Code   RO           30    .text.Timer1_Init   timer1.o
+    0x00001e0e   0x00001e0e   0x00000002   PAD
+    0x00001e10   0x00001e10   0x0000005e   Code   RO          320    .text.Timer2A_Handler  wave.o
+    0x00001e6e   0x00001e6e   0x00000002   PAD
+    0x00001e70   0x00001e70   0x00000088   Code   RO          312    .text.Timer2A_Init  wave.o
+    0x00001ef8   0x00001ef8   0x0000001c   Code   RO          403    .text.Timer3A_Handler  timer3a.o
+    0x00001f14   0x00001f14   0x0000009e   Code   RO          401    .text.Timer3A_Init  timer3a.o
+    0x00001fb2   0x00001fb2   0x00000002   PAD
+    0x00001fb4   0x00001fb4   0x0000001c   Code   RO           52    .text.Timer5A_Handler  texas.o
+    0x00001fd0   0x00001fd0   0x000000a0   Code   RO           56    .text.UART0_Init    texas.o
+    0x00002070   0x00002070   0x00000014   Code   RO          324    .text.Wave_Hit      wave.o
+    0x00002084   0x00002084   0x00000014   Code   RO          328    .text.Wave_Hooray   wave.o
+    0x00002098   0x00002098   0x00000020   Code   RO          318    .text.Wave_Init     wave.o
+    0x000020b8   0x000020b8   0x00000030   Code   RO          322    .text.Wave_Start    wave.o
+    0x000020e8   0x000020e8   0x00000010   Code   RO          316    .text.Wave_Stop     wave.o
+    0x000020f8   0x000020f8   0x000000aa   Code   RO          191    .text.commandList   st7735.o
+    0x000021a2   0x000021a2   0x00000002   PAD
+    0x000021a4   0x000021a4   0x000001a2   Code   RO          183    .text.commonInit    st7735.o
+    0x00002346   0x00002346   0x00000002   PAD
+    0x00002348   0x00002348   0x00000074   Code   RO           96    .text.difficultySelectScreen  osumain.o
+    0x000023bc   0x000023bc   0x00000024   Code   RO          106    .text.drawSquare    osumain.o
+    0x000023e0   0x000023e0   0x0000060e   Code   RO           98    .text.drawSquaresInCircle  osumain.o
+    0x000029ee   0x000029ee   0x00000002   PAD
+    0x000029f0   0x000029f0   0x0000007c   Code   RO          100    .text.endScreen     osumain.o
+    0x00002a6c   0x00002a6c   0x000000da   Code   RO          102    .text.hover         osumain.o
+    0x00002b46   0x00002b46   0x00000002   PAD
+    0x00002b48   0x00002b48   0x00000044   Code   RO           94    .text.languageSelectScreen  osumain.o
+    0x00002b8c   0x00002b8c   0x00000350   Code   RO           88    .text.main          osumain.o
+    0x00002edc   0x00002edc   0x0000024a   Code   RO           92    .text.menuSelectOption  osumain.o
+    0x00003126   0x00003126   0x00000002   PAD
+    0x00003128   0x00003128   0x0000001c   Code   RO          197    .text.pushColor     st7735.o
+    0x00003144   0x00003144   0x00000094   Code   RO          195    .text.setAddrWindow  st7735.o
+    0x000031d8   0x000031d8   0x000000b6   Code   RO           90    .text.startScreen   osumain.o
+    0x0000328e   0x0000328e   0x00000002   PAD
+    0x00003290   0x00003290   0x0000002c   Code   RO          175    .text.writecommand  st7735.o
+    0x000032bc   0x000032bc   0x0000002c   Code   RO          177    .text.writedata     st7735.o
+    0x000032e8   0x000032e8   0x00000028   Code   RO          507    i.__ARM_fpclassify  m_ws.l(fpclassify.o)
+    0x00003310   0x00003310   0x00000388   Code   RO          477    i.__ieee754_rem_pio2  m_ws.l(rred.o)
+    0x00003698   0x00003698   0x000000fc   Code   RO          460    i.__kernel_cos      m_ws.l(cos_i.o)
+    0x00003794   0x00003794   0x000000aa   Code   RO          509    i.__kernel_poly     m_ws.l(poly.o)
+    0x0000383e   0x0000383e   0x00000002   PAD
+    0x00003840   0x00003840   0x000000ec   Code   RO          482    i.__kernel_sin      m_ws.l(sin_i.o)
+    0x0000392c   0x0000392c   0x00000006   Code   RO          464    i.__mathlib_dbl_infnan  m_ws.l(dunder.o)
+    0x00003932   0x00003932   0x0000000c   Code   RO          466    i.__mathlib_dbl_invalid  m_ws.l(dunder.o)
+    0x0000393e   0x0000393e   0x00000002   PAD
+    0x00003940   0x00003940   0x00000010   Code   RO          469    i.__mathlib_dbl_underflow  m_ws.l(dunder.o)
+    0x00003950   0x00003950   0x0000009c   Code   RO          445    i.cos               m_ws.l(cos.o)
+    0x000039ec   0x000039ec   0x000000a0   Code   RO          449    i.sin               m_ws.l(sin.o)
+    0x00003a8c   0x00003a8c   0x00000150   Code   RO          422    x$fpl$dadd          fz_ws.l(daddsub_clz.o)
+    0x00003bdc   0x00003bdc   0x00000010   Code   RO          524    x$fpl$dcheck1       fz_ws.l(dcheck1.o)
+    0x00003bec   0x00003bec   0x000002b4   Code   RO          429    x$fpl$ddiv          fz_ws.l(ddiv.o)
+    0x00003ea0   0x00003ea0   0x0000005e   Code   RO          432    x$fpl$dfix          fz_ws.l(dfix.o)
+    0x00003efe   0x00003efe   0x0000002e   Code   RO          437    x$fpl$dflt          fz_ws.l(dflt_clz.o)
+    0x00003f2c   0x00003f2c   0x00000026   Code   RO          436    x$fpl$dfltu         fz_ws.l(dflt_clz.o)
+    0x00003f52   0x00003f52   0x00000002   PAD
+    0x00003f54   0x00003f54   0x00000154   Code   RO          442    x$fpl$dmul          fz_ws.l(dmul.o)
+    0x000040a8   0x000040a8   0x0000009c   Code   RO          455    x$fpl$dnaninf       fz_ws.l(dnaninf.o)
+    0x00004144   0x00004144   0x0000000c   Code   RO          457    x$fpl$dretinf       fz_ws.l(dretinf.o)
+    0x00004150   0x00004150   0x00000016   Code   RO          423    x$fpl$drsb          fz_ws.l(daddsub_clz.o)
+    0x00004166   0x00004166   0x00000002   PAD
+    0x00004168   0x00004168   0x000001dc   Code   RO          424    x$fpl$dsub          fz_ws.l(daddsub_clz.o)
+    0x00004344   0x00004344   0x00000064   Code   RO          575    x$fpl$retnan        fz_ws.l(retnan.o)
+    0x000043a8   0x000043a8   0x0000005c   Code   RO          505    x$fpl$scalbn        fz_ws.l(scalbn.o)
+    0x00004404   0x00004404   0x00000030   Code   RO          588    x$fpl$trapveneer    fz_ws.l(trapv.o)
+    0x00004434   0x00004434   0x00000000   Code   RO          459    x$fpl$usenofp       fz_ws.l(usenofp.o)
+    0x00004434   0x00004434   0x00000004   PAD
+    0x00004438   0x00004438   0x00000030   Data   RO          461    .constdata          m_ws.l(cos_i.o)
+    0x00004468   0x00004468   0x000000cc   Data   RO          479    .constdata          m_ws.l(rred.o)
+    0x00004534   0x00004534   0x00000004   PAD
+    0x00004538   0x00004538   0x00000028   Data   RO          483    .constdata          m_ws.l(sin_i.o)
+    0x00004560   0x00004560   0x00001464   Data   RO          111    .rodata.Difficulty  osumain.o
+    0x000059c4   0x000059c4   0x00000a28   Data   RO          112    .rodata.ENlang      osumain.o
+    0x000063ec   0x000063ec   0x00000a28   Data   RO          113    .rodata.FRlang      osumain.o
+    0x00006e14   0x00006e14   0x00000040   Data   RO          376    .rodata.Flute       sound.o
+    0x00006e54   0x00006e54   0x000004fb   Data   RO          288    .rodata.Font        st7735.o
+    0x0000734f   0x0000734f   0x00000001   PAD
+    0x00007350   0x00007350   0x00001464   Data   RO          110    .rodata.Lang        osumain.o
+    0x000087b4   0x000087b4   0x0000003b   Data   RO          277    .rodata.Rcmd1       st7735.o
+    0x000087ef   0x000087ef   0x0000000d   Data   RO          278    .rodata.Rcmd2green  st7735.o
+    0x000087fc   0x000087fc   0x0000000d   Data   RO          281    .rodata.Rcmd2red    st7735.o
+    0x00008809   0x00008809   0x0000002b   Data   RO          282    .rodata.Rcmd3       st7735.o
+    0x00008834   0x00008834   0x00000054   Data   RO          391    .rodata.Star        song.o
+    0x00008888   0x00008888   0x00000320   Data   RO          108    .rodata.cursor      osumain.o
+    0x00008ba8   0x00008ba8   0x000009cf   Data   RO          333    .rodata.hitSound    wave.o
+    0x00009577   0x00009577   0x00005583   Data   RO          335    .rodata.hooraySound  wave.o
+    0x0000eafa   0x0000eafa   0x00000c80   Data   RO          114    .rodata.mDOWN       osumain.o
+    0x0000f77a   0x0000f77a   0x00000c80   Data   RO          116    .rodata.mLEFT       osumain.o
+    0x000103fa   0x000103fa   0x00000c80   Data   RO          115    .rodata.mRIGHT      osumain.o
+    0x0001107a   0x0001107a   0x00000c80   Data   RO          117    .rodata.mUP         osumain.o
+    0x00011cfa   0x00011cfa   0x00001464   Data   RO          118    .rodata.menuButton  osumain.o
+    0x0001315e   0x0001315e   0x00002648   Data   RO          109    .rodata.osuLogo     osumain.o
+    0x000157a6   0x000157a6   0x00000093   Data   RO          123    .rodata.str1.1      osumain.o
+    0x00015839   0x00015839   0x00000016   Data   RO          297    .rodata.str1.1      st7735.o
+    0x0001584f   0x0001584f   0x00000001   PAD
+    0x00015850   0x00015850   0x00000020   Data   RO          663    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x000153d0, Size: 0x00000014, Max: 0xffffffff, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x20000000   0x000153d0   0x00000002   Data   RW          274    .data.StTextColor   st7735.o
-    0x20000002   0x000153d2   0x00000002   Data   RW          284    .data._height       st7735.o
-    0x20000004   0x000153d4   0x00000002   Data   RW          283    .data._width        st7735.o
-    0x20000006   0x000153d6   0x00000001   Data   RW          122    .data.dirPressed    osumain.o
-    0x20000007   0x000153d7   0x00000001   PAD
-    0x20000008   0x000153d8   0x00000008   Data   RW          119    .data.pi            osumain.o
-    0x20000010   0x000153e0   0x00000004   Data   RW           12    DATA                random.o
-
-
-    Execution Region ER_ZI (Exec base: 0x20000018, Load base: 0x000153e4, Size: 0x00000528, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00015870, Size: 0x00000044, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000018        -       0x00000060   Zero   RW          511    .bss                c_w.l(libspace.o)
-    0x20000078        -       0x00000001   Zero   RW          278    .bss.ColStart       st7735.o
-    0x20000079   0x000153e4   0x00000003   PAD
-    0x2000007c        -       0x00000004   Zero   RW          330    .bss.Length         wave.o
-    0x20000080        -       0x0000000c   Zero   RW          288    .bss.Message        st7735.o
-    0x2000008c        -       0x00000004   Zero   RW           70    .bss.PeriodicTask2  texas.o
-    0x20000090        -       0x00000004   Zero   RW          406    .bss.PeriodicTask3  timer3a.o
-    0x20000094        -       0x00000001   Zero   RW          279    .bss.RowStart       st7735.o
-    0x20000095   0x000153e4   0x00000003   PAD
-    0x20000098        -       0x00000004   Zero   RW          331    .bss.Soundpt        wave.o
-    0x2000009c        -       0x00000004   Zero   RW          272    .bss.StX            st7735.o
-    0x200000a0        -       0x00000004   Zero   RW          273    .bss.StY            st7735.o
-    0x200000a4        -       0x00000001   Zero   RW          282    .bss.TabColor       st7735.o
-    0x200000a5        -       0x00000001   Zero   RW          121    .bss.difficulty     osumain.o
-    0x200000a6   0x000153e4   0x00000002   PAD
-    0x200000a8        -       0x00000014   Zero   RW          131    .bss.difficultyPos  osumain.o
-    0x200000bc        -       0x00000002   Zero   RW          392    .bss.hitCircleFlag  song.o
-    0x200000be   0x000153e4   0x00000002   PAD
-    0x200000c0        -       0x00000014   Zero   RW          135    .bss.hitSquare      osumain.o
-    0x200000d4        -       0x00000001   Zero   RW          391    .bss.i              song.o
-    0x200000d5        -       0x00000001   Zero   RW          376    .bss.index          sound.o
-    0x200000d6        -       0x00000001   Zero   RW          126    .bss.joyButton      osumain.o
-    0x200000d7   0x000153e4   0x00000001   PAD
-    0x200000d8        -       0x00000008   Zero   RW          127    .bss.joystickData   osumain.o
-    0x200000e0        -       0x00000014   Zero   RW          130    .bss.langPos        osumain.o
-    0x200000f4        -       0x00000001   Zero   RW          120    .bss.langauge       osumain.o
-    0x200000f5   0x000153e4   0x00000003   PAD
-    0x200000f8        -       0x00000014   Zero   RW          132    .bss.menuPos        osumain.o
-    0x2000010c        -       0x00000014   Zero   RW          128    .bss.mouse          osumain.o
-    0x20000120        -       0x00000001   Zero   RW          133    .bss.option         osumain.o
-    0x20000121   0x000153e4   0x00000003   PAD
-    0x20000124        -       0x00000014   Zero   RW          129    .bss.osuVals        osumain.o
-    0x20000138        -       0x00000004   Zero   RW          134    .bss.score          osumain.o
-    0x2000013c   0x000153e4   0x00000004   PAD
-    0x20000140        -       0x00000000   Zero   RW            2    HEAP                startup.o
-    0x20000140        -       0x00000400   Zero   RW            1    STACK               startup.o
+    0x20000000   0x00015870   0x00000002   Data   RW          275    .data.StTextColor   st7735.o
+    0x20000002   0x00015872   0x00000002   Data   RW          285    .data._height       st7735.o
+    0x20000004   0x00015874   0x00000002   Data   RW          284    .data._width        st7735.o
+    0x20000006   0x00015876   0x0000002b   Data   RW          135    .data.arrDirection  osumain.o
+    0x20000031   0x000158a1   0x00000001   Data   RW          122    .data.dirPressed    osumain.o
+    0x20000032   0x000158a2   0x00000006   PAD
+    0x20000038   0x000158a8   0x00000008   Data   RW          119    .data.pi            osumain.o
+    0x20000040   0x000158b0   0x00000004   Data   RW           12    DATA                random.o
+
+
+    Execution Region ER_ZI (Exec base: 0x20000048, Load base: 0x000158b4, Size: 0x00000558, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000048        -       0x00000060   Zero   RW          512    .bss                c_w.l(libspace.o)
+    0x200000a8        -       0x00000001   Zero   RW          279    .bss.ColStart       st7735.o
+    0x200000a9   0x000158b4   0x00000003   PAD
+    0x200000ac        -       0x00000004   Zero   RW          331    .bss.Length         wave.o
+    0x200000b0        -       0x0000000c   Zero   RW          289    .bss.Message        st7735.o
+    0x200000bc        -       0x00000004   Zero   RW           70    .bss.PeriodicTask2  texas.o
+    0x200000c0        -       0x00000004   Zero   RW          407    .bss.PeriodicTask3  timer3a.o
+    0x200000c4        -       0x00000001   Zero   RW          280    .bss.RowStart       st7735.o
+    0x200000c5   0x000158b4   0x00000003   PAD
+    0x200000c8        -       0x00000004   Zero   RW          332    .bss.Soundpt        wave.o
+    0x200000cc        -       0x00000004   Zero   RW          273    .bss.StX            st7735.o
+    0x200000d0        -       0x00000004   Zero   RW          274    .bss.StY            st7735.o
+    0x200000d4        -       0x00000001   Zero   RW          283    .bss.TabColor       st7735.o
+    0x200000d5        -       0x00000001   Zero   RW          121    .bss.difficulty     osumain.o
+    0x200000d6   0x000158b4   0x00000002   PAD
+    0x200000d8        -       0x0000001c   Zero   RW          131    .bss.difficultyPos  osumain.o
+    0x200000f4        -       0x00000002   Zero   RW          393    .bss.hitCircleFlag  song.o
+    0x200000f6   0x000158b4   0x00000002   PAD
+    0x200000f8        -       0x0000001c   Zero   RW          136    .bss.hitSquare      osumain.o
+    0x20000114        -       0x00000001   Zero   RW          392    .bss.i              song.o
+    0x20000115        -       0x00000001   Zero   RW          377    .bss.index          sound.o
+    0x20000116        -       0x00000001   Zero   RW          126    .bss.joyButton      osumain.o
+    0x20000117   0x000158b4   0x00000001   PAD
+    0x20000118        -       0x00000008   Zero   RW          127    .bss.joystickData   osumain.o
+    0x20000120        -       0x0000001c   Zero   RW          130    .bss.langPos        osumain.o
+    0x2000013c        -       0x00000001   Zero   RW          120    .bss.langauge       osumain.o
+    0x2000013d   0x000158b4   0x00000003   PAD
+    0x20000140        -       0x0000001c   Zero   RW          132    .bss.menuPos        osumain.o
+    0x2000015c        -       0x0000001c   Zero   RW          128    .bss.mouse          osumain.o
+    0x20000178        -       0x00000001   Zero   RW          133    .bss.option         osumain.o
+    0x20000179   0x000158b4   0x00000003   PAD
+    0x2000017c        -       0x0000001c   Zero   RW          129    .bss.osuVals        osumain.o
+    0x20000198        -       0x00000004   Zero   RW          134    .bss.score          osumain.o
+    0x2000019c   0x000158b4   0x00000004   PAD
+    0x200001a0        -       0x00000000   Zero   RW            2    HEAP                startup.o
+    0x200001a0        -       0x00000400   Zero   RW            1    STACK               startup.o
 
 
 ==============================================================================
@@ -1840,12 +1854,12 @@ Image component sizes
         94          0          0          0          0        665   dac.o
        154          0          0          0          0        508   edgetrigger.o
        474          0          0          0          0        806   joystick.o
-      3888         16      44377          9        136       6358   osumain.o
+      4338         20      44407         52        184       6636   osumain.o
        138          0          0          0          0        574   pll.o
         60         14          0          4          0        228   random.o
        132          0         84          0          3        893   song.o
        110          0         64          0          1       1305   sound.o
-      3318          0       1425          6         23      13630   st7735.o
+      4026          4       1425          6         23      13677   st7735.o
        692        632          0          0       1024        956   startup.o
        240          2          0          0          0        320   stringconversion.o
       1190          0          0          0          4       2841   texas.o
@@ -1854,9 +1868,9 @@ Image component sizes
        366          0      24402          0          8       1790   wave.o
 
     ----------------------------------------------------------------------
-     11560        664      70388         20       1224      33394   Object Totals
+     12716        672      70416         68       1272      33719   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        56          0          4          1         21          0   (incl. Padding)
+        54          0          2          6         21          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1907,8 +1921,8 @@ Image component sizes
        236         12         40          0          0        128   sin_i.o
 
     ----------------------------------------------------------------------
-      4744        334        296          0         96       3144   Library Totals
-        14          0          4          0          0          0   (incl. Padding)
+      4748        334        296          0         96       3144   Library Totals
+        18          0          4          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1919,7 +1933,7 @@ Image component sizes
       1952        134        292          0          0        972   m_ws.l
 
     ----------------------------------------------------------------------
-      4744        334        296          0         96       3144   Library Totals
+      4748        334        296          0         96       3144   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -1928,15 +1942,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     16304        998      70684         20       1320      34786   Grand Totals
-     16304        998      70684         20       1320      34786   ELF Image Totals
-     16304        998      70684         20          0          0   ROM Totals
+     17464       1006      70712         68       1368      35111   Grand Totals
+     17464       1006      70712         68       1368      35111   ELF Image Totals
+     17464       1006      70712         68          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                86988 (  84.95kB)
-    Total RW  Size (RW Data + ZI Data)              1340 (   1.31kB)
-    Total ROM Size (Code + RO Data + RW Data)      87008 (  84.97kB)
+    Total RO  Size (Code + RO Data)                88176 (  86.11kB)
+    Total RW  Size (RW Data + ZI Data)              1436 (   1.40kB)
+    Total ROM Size (Code + RO Data + RW Data)      88244 (  86.18kB)
 
 ==============================================================================
 
